@@ -2,7 +2,7 @@ import React from "react";
 
 function Shop() {
   return (
-    <div className="landing-container">
+    <div className="shop-container">
       <h1>Shop</h1>
     </div>
   );

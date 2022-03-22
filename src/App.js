@@ -3,17 +3,13 @@ import { Routes, Route, Outlet } from "react-router-dom";
 // import PrivateRoute from './PrivateRoute';
 import Landing from "./pages/Landing";
 import Shop from "./pages/Shop";
-// import Admin from './pages/Admin';
-// import Login from "./pages/Login";
-// import Minimalism from "./pages/Minimalism";
-// import ProductReviews from "./pages/ProductReviews";
-// import ForTheHome from "./pages/ForTheHome";
-// import Lifestyle from "./pages/Lifestyle";
-// import Contact from "./pages/Contact";
+import Terms from "./pages/Terms";
+import Admin from "./pages/Admin";
+import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 // import NavMenu from './components/NavMenu';
 // import ScrollUpArrow from './components/ScrollUpArrow';
-// import Footer from './components/Footer';
 // import BlogPost from './pages/BlogPost';
 // import AdminPost from './pages/AdminPost';
 // import CreatePost from './pages/CreatePost';
@@ -55,22 +51,19 @@ function App(props) {
             <>
               <Navbar />
               <Outlet />
+              <Footer />
             </>
           }
         >
           <Route path="/shop" element={<Shop />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/admin" element={<Admin />} />
         </Route>
         <Route path="/" element={<Landing />} />
         {/* <Navbar toggleMenu={toggleMenu} />
 					<NavMenu displayMenu={displayMenu} handleMouseUp={handleMouseUp}/>
-					<Route exact path="/" component={Home} />
-					<Route path="/login" component={Login} />
 					<Route path="/loading" component={LoadingSpinner} />
-					<Route path="/minimalism" component={Minimalism} />
-					<Route path="/product_mentions" component={ProductReviews} />
-					<Route path="/homemade" component={ForTheHome} />
-					<Route path="/lifestyle" component={Lifestyle} />
-					<Route path="/contact" component={Contact} />
 					<Route path="/blogpost/:id" component={BlogPost} />
 					<Route path="/privacypolicy" component={PrivacyPolicy} />
 					<PrivateRoute path="/admin" component={Admin} />
