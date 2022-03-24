@@ -1,0 +1,7 @@
+.menu-container.showing {
+  border: 1px solid black;
+}
+
+.menu-container.hiding {
+  display: none;
+}

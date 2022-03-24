@@ -4,18 +4,30 @@ import ItemCard from "../components/ItemCard";
 import sporeStashLogo from "../img/Final_deer_flat.png";
 
 function Shop() {
-  const [items, setItems] = useState([]);
+  const [displayedItems, setDisplayedItems] = useState([]);
+  const [spores, setSpores] = useState([]);
+  const [more, setMore] = useState([]);
 
   useEffect(() => {
     let mounting = true;
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/items`)
       .then((res) => {
-        // const postsSortedByDate = res.data.sort((a, b) => new Date(b.created_date) - new Date(a.created_date));
-        // const postsMostRecentNine = postsSortedByDate.slice(0, 12);
+        const spores = [];
+        const more = [];
+        res.data.forEach((item) => {
+          if (item.item_category === "spore") {
+            spores.push(item);
+          } else {
+            more.push(item);
+          }
+        });
+
         if (mounting) {
           console.log("RES: ", res);
-          setItems(res.data);
+          setDisplayedItems(spores);
+          setSpores(spores);
+          setMore(more);
           //   handleScrollPosition();
         }
       })
@@ -24,13 +36,22 @@ function Shop() {
       });
     return () => (mounting = false);
   }, []);
-  console.log("items: ", items);
+  function handleSporeClick(e) {
+    setDisplayedItems(spores);
+  }
+  function handleMoreClick(e) {
+    setDisplayedItems(more);
+  }
   return (
     <div className="shop-container">
       <h1>Shop</h1>
+      <div className="shop-buttons">
+        <button onClick={handleSporeClick}>Spores</button>
+        <button onClick={handleMoreClick}>More</button>
+      </div>
       <div className="shop-cards">
-        {items.map((item) => {
-          return <ItemCard item={item} key={item.id} />;
+        {displayedItems.map((item) => {
+          return <ItemCard item={item} key={item.item_id} />;
         })}
       </div>
     </div>

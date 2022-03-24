@@ -1,5 +1,5 @@
 import React from "react";
-// import '../styles/post-card.css';
+import "../styles/item-card.css";
 // import moment from 'moment';
 import { Link } from "react-router-dom";
 // import { titleToUrlHelper } from '../helpers/helperFunctions.js';
@@ -64,6 +64,15 @@ const ItemCard = (props) => {
   return (
     <div className="item-container">
       <img src={props.item.image_url} />
+      <div className="card-info">
+        <h3>{props.item.item_name}</h3>
+        <p>{props.item.item_blurb}</p>
+        <span className="item-price">${props.item.item_price}</span>
+        <div className="card-buttons">
+          <button>More Info</button>
+          <button>Add To Cart</button>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.item-container {
+  display: flex;
+}
+
+.item-container img {
+  height: 164px;
+  width: 164px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
