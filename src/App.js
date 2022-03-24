@@ -7,6 +7,7 @@ import Terms from "./pages/Terms";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Menu from "./components/Menu";
 import Footer from "./components/Footer";
 // import NavMenu from './components/NavMenu';
 // import ScrollUpArrow from './components/ScrollUpArrow';
@@ -28,20 +29,21 @@ function App(props) {
   // 	localStorage.setItem("tokens", JSON.stringify(data));
   // 	setAuthTokens(data);
   // }
+
   // Nav
-  // const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-  // function toggleMenu() {
-  // 	if(displayMenu) {
-  // 		setDisplayMenu(false);
-  // 	} else {
-  // 		setDisplayMenu(true);
-  // 	}
-  // }
+  function toggleMenu() {
+    if (displayMenu) {
+      setDisplayMenu(false);
+    } else {
+      setDisplayMenu(true);
+    }
+  }
 
-  // function handleMouseUp(e) {
-  // 	toggleMenu();
-  // }
+  function handleMouseUp(e) {
+    toggleMenu();
+  }
   return (
     // <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
     <div>
@@ -49,7 +51,8 @@ function App(props) {
         <Route
           element={
             <>
-              <Navbar />
+              <Navbar toggleMenu={toggleMenu} />
+              <Menu displayMenu={displayMenu} handleMouseUp={handleMouseUp} />
               <Outlet />
               <Footer />
             </>
