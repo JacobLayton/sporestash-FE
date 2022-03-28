@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "./theme";
 // import Auth0ProviderWithHistory from "./auth/auth0-provider-with-history";
 // import Modal from "react-modal";
 import "./fontAwesome";
@@ -14,8 +17,13 @@ const rootElement = document.getElementById("root");
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* <Auth0ProviderWithHistory> */}
-    <App />,{/* </Auth0ProviderWithHistory> */}
+    <ThemeProvider theme={theme}>
+      {/* <Auth0ProviderWithHistory> */}
+      <CssBaseline />
+      <App />
+      {/* </Auth0ProviderWithHistory> */}
+    </ThemeProvider>
+    ,
   </BrowserRouter>,
   rootElement
 );

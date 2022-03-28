@@ -1,0 +1,28 @@
+/**
+ * @license
+ * MyFonts Webfont Build ID 4575609, 2022-03-25T22:41:44-0400
+ * 
+ * The fonts listed in this notice are subject to the End User License
+ * Agreement(s) entered into by the website owner. All other parties are 
+ * explicitly restricted from using the Licensed Webfonts(s).
+ * 
+ * You may obtain a valid license at the URLs below.
+ * 
+ * Webfont: NationalForestRegular by Mini Press
+ * URL: https://www.myfonts.com/fonts/mini-press/national-forest/script/
+ * Copyright: null
+ * 
+ * 
+ * 
+ * © 2022 MyFonts Inc
+*/
+
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url("//hello.myfonts.net/count/45d179");
+  
+@font-face {
+  font-family: "NationalForestRegular";
+  src: url('webFonts/NationalForestRegular/font.woff2') format('woff2'), url('webFonts/NationalForestRegular/font.woff') format('woff');
+}
+
