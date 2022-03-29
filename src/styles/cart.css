@@ -1,0 +1,13 @@
+/* .cart-container.showing {
+  border: 1px solid black;
+}
+
+.cart-container.hiding {
+  display: none;
+} */
+
+.cart-container .MuiPaper-root {
+  border: 1px solid red;
+  height: 300px;
+  border-radius: 0 0 0 30px;
+}

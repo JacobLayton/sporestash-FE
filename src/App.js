@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, Outlet } from "react-router-dom";
+import { useMediaQuery } from "@mui/material";
 // import PrivateRoute from './PrivateRoute';
 import Landing from "./pages/Landing";
 import Shop from "./pages/Shop";
@@ -8,6 +9,7 @@ import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
+import Cart from "./components/Cart";
 import Footer from "./components/Footer";
 // import NavMenu from './components/NavMenu';
 // import ScrollUpArrow from './components/ScrollUpArrow';
@@ -32,6 +34,18 @@ function App(props) {
 
   // Nav
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayCart, setDisplayCart] = useState(false);
+  const [cart, setCart] = useState([]);
+  const mobileDown = useMediaQuery("(max-width:600px)");
+  console.log("mobileDown: ", mobileDown);
+  let localCart = localStorage.getItem("cart");
+
+  useEffect(() => {
+    //turn it into js
+    localCart = JSON.parse(localCart);
+    //load persisted cart into state if it exists
+    if (localCart) setCart(localCart);
+  }, []);
 
   function toggleMenu() {
     if (displayMenu) {
@@ -40,25 +54,42 @@ function App(props) {
       setDisplayMenu(true);
     }
   }
-
-  function handleMouseUp(e) {
-    toggleMenu();
+  function toggleCart() {
+    if (displayCart) {
+      setDisplayCart(false);
+    } else {
+      setDisplayCart(true);
+    }
   }
+
   return (
     // <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
-    <div>
+    <div className="App">
       <Routes>
         <Route
           element={
             <>
-              <Navbar toggleMenu={toggleMenu} />
-              <Menu displayMenu={displayMenu} handleMouseUp={handleMouseUp} />
+              <Navbar toggleMenu={toggleMenu} toggleCart={toggleCart} />
+              <Menu
+                displayMenu={displayMenu}
+                toggleMenu={toggleMenu}
+                mobileDown={mobileDown}
+              />
+              <Cart
+                displayCart={displayCart}
+                toggleCart={toggleCart}
+                cart={cart}
+                setCart={setCart}
+              />
               <Outlet />
               <Footer />
             </>
           }
         >
-          <Route path="/shop" element={<Shop />} />
+          <Route
+            path="/shop"
+            element={<Shop cart={cart} setCart={setCart} />}
+          />
           <Route path="/terms" element={<Terms />} />
           <Route path="/login" element={<Login />} />
           <Route path="/admin" element={<Admin />} />
