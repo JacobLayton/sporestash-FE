@@ -1,3 +1,7 @@
-.landing-container {
+.navbar-container {
   display: flex;
+}
+
+.navbar-container h1 {
+  font-family: NationalForestRegular;
 }

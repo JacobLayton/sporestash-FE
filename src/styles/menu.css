@@ -1,7 +1,13 @@
-.menu-container.showing {
+/* .menu-container.showing {
   border: 1px solid black;
 }
 
 .menu-container.hiding {
   display: none;
+} */
+
+.menu-container .MuiPaper-root {
+  border: 1px solid red;
+  height: 30vh;
+  border-radius: 0 0 30px;
 }

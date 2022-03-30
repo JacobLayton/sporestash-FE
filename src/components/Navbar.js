@@ -3,14 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../styles/navbar.css";
 
 function Navbar(props) {
-  function handleBurgerClick(e) {
-    alert("burger");
-  }
-  function handleCartClick(e) {
-    alert("cart");
-  }
   return (
-    <div className="landing-container">
+    <div className="navbar-container">
       <FontAwesomeIcon
         icon={["fas", "bars"]}
         size="2x"
@@ -22,7 +16,7 @@ function Navbar(props) {
         icon={["fas", "cart-shopping"]}
         size="2x"
         className="nav-cart"
-        onClick={handleCartClick}
+        onClick={props.toggleCart}
       />
     </div>
   );
