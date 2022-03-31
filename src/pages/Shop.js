@@ -3,7 +3,7 @@ import axios from "axios";
 import ItemCard from "../components/ItemCard";
 import sporeStashLogo from "../img/Final_deer_flat.png";
 
-function Shop() {
+function Shop(props) {
   const [displayedItems, setDisplayedItems] = useState([]);
   const [spores, setSpores] = useState([]);
   const [more, setMore] = useState([]);
@@ -24,7 +24,6 @@ function Shop() {
         });
 
         if (mounting) {
-          console.log("RES: ", res);
           setDisplayedItems(spores);
           setSpores(spores);
           setMore(more);
@@ -36,12 +35,15 @@ function Shop() {
       });
     return () => (mounting = false);
   }, []);
+
   function handleSporeClick(e) {
     setDisplayedItems(spores);
   }
+
   function handleMoreClick(e) {
     setDisplayedItems(more);
   }
+
   return (
     <div className="shop-container">
       <h1>Shop</h1>
@@ -51,7 +53,14 @@ function Shop() {
       </div>
       <div className="shop-cards">
         {displayedItems.map((item) => {
-          return <ItemCard item={item} key={item.item_id} />;
+          return (
+            <ItemCard
+              item={item}
+              key={item.item_id}
+              cart={props.cart}
+              setCart={props.setCart}
+            />
+          );
         })}
       </div>
     </div>

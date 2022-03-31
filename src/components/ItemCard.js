@@ -5,62 +5,38 @@ import { Link } from "react-router-dom";
 // import { titleToUrlHelper } from '../helpers/helperFunctions.js';
 
 const ItemCard = (props) => {
-  // const createdDate = moment(props.post.created_date).format('MMMM Do, YYYY');
-  // let urlStringLiteral;
-  // if(props.pathname === '/admin') {
-  //     urlStringLiteral = 'adminpost';
-  // } else {
-  //     urlStringLiteral = 'blogpost';
-  // }
-  // let displayCategory;
-  // let categoryPath;
-  // if (props.post.category === 'product_reviews') {
-  //     displayCategory = 'Product Mentions';
-  //     categoryPath = 'product_mentions';
-  // } else if (props.post.category === 'lifestyle') {
-  //     displayCategory = 'Lifestyle';
-  //     categoryPath = 'lifestyle';
-  // } else if (props.post.category === 'for_the_home') {
-  //     displayCategory = 'Homemade';
-  //     categoryPath = 'homemade';
-  // } else {
-  //     displayCategory = 'General';
-  // }
-  // const urlFriendlyTitle = titleToUrlHelper(props.post.title);
+  function handleAddToCart(e) {
+    const itemObj = {
+      item_id: props.item.item_id,
+      cart_quantity: 1,
+      item_name: props.item.item_name,
+      item_price: props.item.item_price,
+      image_url: props.item.image_url,
+    };
+    let cartCopy = [...props.cart];
 
-  // function handleClick(e) {
-  //     sessionStorage.setItem("scrollPosition", window.pageYOffset);
-  // }
+    //assuming we have an ID field in our item
+    let id = props.item.item_id;
 
-  // return (
-  // <div className='card-wrapper'>
-  //     <div className='card-wrapper-sans-linebreak'>
-  //         <Link to={`/${urlStringLiteral}/${props.post.id}/${urlFriendlyTitle}`} key={props.post.id} className='post-card-image-link' onClick={handleClick}>
-  //             <img src={props.post.image_url} alt="" />
-  //             <p className='hover-blurb'>{props.post.blurb}</p>
-  //         </Link>
-  //         <div className='card-info'>
+    //look for item in cart array
+    let existingItem = cartCopy.find((cartItem) => cartItem.item_id == id);
 
-  //                 <h2 className='card-title'>
-  //                 <Link to={`/${urlStringLiteral}/${props.post.id}/${urlFriendlyTitle}`} key={props.post.id} onClick={handleClick}>{props.post.title}</Link>
-  //                 </h2>
+    //if item already exists
+    if (existingItem) {
+      existingItem.cart_quantity += 1; //update this to be number selected
+    } else {
+      //if item doesn't exist, simply add it
+      cartCopy.push(itemObj);
+    }
 
-  //             <h5>{createdDate}</h5>
-  //             <h5 className='card-category'>
-  //                 <Link to={`/${categoryPath}`}>{displayCategory}</Link>
-  //             </h5>
-  //             <p>{props.post.blurb}</p>
-  //             <Link to={`/${urlStringLiteral}/${props.post.id}/${urlFriendlyTitle}`} key={props.post.id} onClick={handleClick}>
-  //                 <div className='read-more'>
-  //                     <span>READ MORE</span>
-  //                     <span id='read-more-arrow'> »</span>
-  //                 </div>
-  //             </Link>
-  //         </div>
-  //     </div>
-  //     <div className='card-line-break' />
-  // </div>
-  // );
+    //update app state
+    props.setCart(cartCopy);
+
+    //make cart a string and store in local space
+    let stringCart = JSON.stringify(cartCopy);
+    localStorage.setItem("cart", stringCart);
+  }
+
   return (
     <div className="item-container">
       <img src={props.item.image_url} />
@@ -70,7 +46,7 @@ const ItemCard = (props) => {
         <span className="item-price">${props.item.item_price}</span>
         <div className="card-buttons">
           <button>More Info</button>
-          <button>Add To Cart</button>
+          <button onClick={handleAddToCart}>Add To Cart</button>
         </div>
       </div>
     </div>
