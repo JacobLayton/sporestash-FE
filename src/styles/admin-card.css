@@ -1,0 +1,10 @@
+.admin-item-container {
+  display: flex;
+}
+
+.admin-item-container img {
+  height: 164px;
+  width: 164px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
