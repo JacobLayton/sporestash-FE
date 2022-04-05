@@ -6,6 +6,7 @@ import Landing from "./pages/Landing";
 import Shop from "./pages/Shop";
 import Terms from "./pages/Terms";
 import Admin from "./pages/Admin";
+import AdminOrders from "./pages/AdminOrders";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
@@ -92,9 +93,10 @@ function App(props) {
           />
           <Route path="/terms" element={<Terms />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/admin" element={<Admin />} />
         </Route>
         <Route path="/" element={<Landing />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin-orders" element={<AdminOrders />} />
         {/* <Navbar toggleMenu={toggleMenu} />
 					<NavMenu displayMenu={displayMenu} handleMouseUp={handleMouseUp}/>
 					<Route path="/loading" component={LoadingSpinner} />
