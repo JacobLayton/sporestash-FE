@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { DataGrid, GridCellParams } from "@mui/x-data-grid";
-import { rootShouldForwardProp } from "@mui/material/styles/styled";
+import { DataGrid } from "@mui/x-data-grid";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -74,6 +73,37 @@ function AdminOrders() {
     setOrderDetails(orderDetailsObj);
   }
 
+  function onFulfilledClick(e) {
+    const today = new Date().toISOString();
+    axios
+      .put(
+        `${process.env.REACT_APP_SERVER_URL}/orders/${orderDetails.order_id}`,
+        {
+          fulfilled: true,
+          ship_date: today,
+        }
+      )
+      .then((res) => {
+        const orderDetailsCopy = orderDetails;
+        orderDetailsCopy.fulfilled = true;
+        orderDetails.ship_date = today;
+        setOrderDetails(orderDetailsCopy);
+        const ordersCopy = [];
+        orders.map((order) => {
+          if (order.order_id === orderDetails.order_id) {
+            order.fulfilled = true;
+            order.ship_date = today;
+          }
+          return ordersCopy.push(order);
+        });
+        setOrders(ordersCopy);
+      })
+      .catch((err) => {
+        console.log("Error updating order fullfilled: ", err);
+        alert("Could not set to fulfilled");
+      });
+  }
+
   const columns = [
     { field: "order_id", headerName: "ID", width: 50 },
     { field: "fulfilled", headerName: "Fulfilled", width: 100 },
@@ -90,7 +120,6 @@ function AdminOrders() {
     { field: "canceled", headerName: "Canceled", width: 150 },
     { field: "stripe_id", headerName: "Strip ID", width: 150 },
   ];
-  console.log(orderDetails);
 
   return (
     <div className="admin-orders-container">
@@ -117,7 +146,7 @@ function AdminOrders() {
         ) : (
           <div>
             <p>order_id: {orderDetails.order_id}</p>
-            <p>fulfilled: {orderDetails.fulfilled}</p>
+            <p>fulfilled: {String(orderDetails.fulfilled)}</p>
             <p>ship_date: {orderDetails.ship_date}</p>
             <p>order_date: {orderDetails.order_date}</p>
             {orderDetails.order_details.map((item) => {
@@ -129,7 +158,7 @@ function AdminOrders() {
                 </p>
               );
             })}
-            <p>paid: {orderDetails.paid}</p>
+            <p>paid: {String(orderDetails.paid)}</p>
             <p>order_total: {orderDetails.order_total}</p>
             <p>payment_stripe_id: {orderDetails.payment_stripe_id}</p>
             <p>customer_id: {orderDetails.customer_id}</p>
@@ -144,6 +173,8 @@ function AdminOrders() {
             <p>zip: {orderDetails.zip}</p>
             <p>country: {orderDetails.country}</p>
             <p>customer_stripe_id: {orderDetails.customer_stripe_id}</p>
+            <button onClick={onFulfilledClick}>Fulfilled</button>
+            <button>Delete Order</button>
           </div>
         )}
       </div>
