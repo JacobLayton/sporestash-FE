@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCard from "../components/AdminCard";
 
@@ -24,7 +25,9 @@ function Admin() {
     <div className="admin-container">
       <h1>Admin</h1>
       <button>Log Out</button>
-      <button>Create New Item</button>
+      <Link to="/create-item">
+        <button>Create New Item</button>
+      </Link>
       <div className="admin-cards-container">
         {items.map((item) => {
           return <AdminCard item={item} key={item.item_id} />;

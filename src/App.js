@@ -5,19 +5,19 @@ import { useMediaQuery } from "@mui/material";
 import Landing from "./pages/Landing";
 import Shop from "./pages/Shop";
 import Terms from "./pages/Terms";
-import Admin from "./pages/Admin";
-import AdminOrders from "./pages/AdminOrders";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import Admin from "./pages/Admin";
+import AdminOrders from "./pages/AdminOrders";
+import CreateItem from "./pages/CreateItem";
+import EditItem from "./pages/EditItem";
 // import NavMenu from './components/NavMenu';
 // import ScrollUpArrow from './components/ScrollUpArrow';
 // import BlogPost from './pages/BlogPost';
 // import AdminPost from './pages/AdminPost';
-// import CreatePost from './pages/CreatePost';
-// import EditPost from './pages/EditPost';
 // import PrivacyPolicy from './pages/PrivacyPolicy';
 // import { AuthContext } from "./context/auth";
 // import LoadingSpinner from './components/LoadingSpinner';
@@ -97,6 +97,8 @@ function App(props) {
         <Route path="/" element={<Landing />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin-orders" element={<AdminOrders />} />
+        <Route path="/create-item" element={<CreateItem />} />
+        <Route path="/edit-item/:id" element={<EditItem />} />
         {/* <Navbar toggleMenu={toggleMenu} />
 					<NavMenu displayMenu={displayMenu} handleMouseUp={handleMouseUp}/>
 					<Route path="/loading" component={LoadingSpinner} />
