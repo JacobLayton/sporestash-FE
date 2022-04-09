@@ -1,10 +1,20 @@
 import React from "react";
-import "../styles/admin-card.css";
-// import moment from 'moment';
 import { Link } from "react-router-dom";
-// import { titleToUrlHelper } from '../helpers/helperFunctions.js';
+import axios from "axios";
+import "../styles/admin-card.css";
 
 const AdminCard = (props) => {
+  const handleDelete = (event) => {
+    event.preventDefault();
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/items/${props.item.item_id}`)
+      .then((res) => {
+        console.log("RES: ", res);
+      })
+      .catch((err) => {
+        console.log("Error creating item: ", err);
+      });
+  };
   return (
     <div className="admin-item-container">
       <img src={props.item.image_url} />
@@ -12,8 +22,10 @@ const AdminCard = (props) => {
         <h3>{props.item.item_name}</h3>
         <span className="item-price">${props.item.item_price}</span>
         <div className="card-buttons">
-          <button>Delete Item</button>
-          <button>Edit Item</button>
+          <button onClick={handleDelete}>Delete Item</button>
+          <Link to={`/edit-item/${props.item.item_id}`}>
+            <button>Edit Item</button>
+          </Link>
         </div>
       </div>
     </div>

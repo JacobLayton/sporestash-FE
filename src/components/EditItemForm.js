@@ -14,45 +14,10 @@ import { MenuItem } from "@mui/material";
 import { ListItemText } from "@mui/material";
 import { Button } from "@mui/material";
 
-function getDate() {
-  const today = new Date();
-  const day = today.getDate();
-  const month = today.getMonth() + 1;
-  const year = today.getFullYear();
-  const dateString = `${year}-${month}-${day}`;
-  return dateString;
-}
-
-const defaultValues = {
-  item_name: "",
-  item_category: "",
-  image_url: "",
-  item_blurb: "",
-  item_description: "",
-  item_price: "",
-  item_quantity: "",
-  units_available: null,
-  is_available: "",
-  created_date: getDate(),
-  is_active: "",
-  swab_price: "",
-  print_price: "",
-  syringe_price: "",
-  swab_available: false,
-  print_available: false,
-  syringe_available: false,
-  swab_quantity: "",
-  print_quantity: "",
-  syringe_quantity: "",
-  hide_type: null,
-  display_size: "",
-  sizes_available: [],
-};
-
 const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
 
-function CreateItemForm() {
-  const [formValues, setFormValues] = useState(defaultValues);
+function EditItemForm(props) {
+  const [formValues, setFormValues] = useState(props.itemData);
 
   const handleCategoryChange = (e) => {
     let { name, value } = e.target;
@@ -140,7 +105,7 @@ function CreateItemForm() {
         formValuesCopy[formObjKeys[i]] = null;
       }
     }
-    if (formValues.sizes_available.length > 0) {
+    if (formValues.sizes_available && formValues.sizes_available.length > 0) {
       formValuesCopy.sizes_available = JSON.stringify(
         formValues.sizes_available
       );
@@ -148,7 +113,10 @@ function CreateItemForm() {
       formValuesCopy.sizes_available = null;
     }
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/items`, formValuesCopy)
+      .put(
+        `${process.env.REACT_APP_SERVER_URL}/items/${formValuesCopy.item_id}`,
+        formValuesCopy
+      )
       .then((res) => {
         console.log("RES: ", res);
       })
@@ -158,7 +126,7 @@ function CreateItemForm() {
   };
   return (
     <div className="edit-item-container">
-      <h1>CreateItemForm</h1>
+      <h1>EditItemForm</h1>
       <form onSubmit={handleSubmit}>
         <Grid>
           <Grid container direction="column">
@@ -455,4 +423,4 @@ function CreateItemForm() {
   );
 }
 
-export default CreateItemForm;
+export default EditItemForm;
