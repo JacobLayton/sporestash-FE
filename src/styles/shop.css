@@ -1,0 +1,62 @@
+.shop-container {
+  background: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.shop-container .main-logo {
+  width: 46vw;
+  height: auto;
+}
+
+.shop-buttons {
+  padding: 0 4%;
+  width: 100%;
+}
+
+.cubensis-button {
+  border: 1px solid var(--purple);
+  border-right: none;
+  border-radius: var(--border-radius) 0 0 0;
+  background-color: black;
+  color: var(--purple);
+  height: 50px;
+  width: 33.33333%;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: "NTR", sans-serif;
+}
+.exotic-button {
+  border: 1px solid var(--purple);
+  background-color: black;
+  color: var(--purple);
+  height: 50px;
+  width: 33.33333%;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: "NTR", sans-serif;
+}
+.merch-button {
+  border: 1px solid var(--purple);
+  border-left: none;
+  border-radius: 0 var(--border-radius) 0 0;
+  background-color: black;
+  color: var(--purple);
+  height: 50px;
+  width: 33.33333%;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: "NTR", sans-serif;
+}
+.active {
+  background-color: var(--purple);
+  color: black;
+}
+.shop-cards {
+  border: 1px solid var(--purple);
+  border-top: none;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  margin: 0 4%;
+  padding: 2% 2%;
+}

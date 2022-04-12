@@ -9,7 +9,7 @@ function Landing() {
       <h1>Spore Stash</h1>
       <img src={sporeStashLogo} alt="Spore Stash Logo" />
       <Link to="/shop">
-        <button>Shop</button>
+        <button className="landing-button">SHOP</button>
       </Link>
     </div>
   );

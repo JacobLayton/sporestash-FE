@@ -1,32 +1,39 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import ItemCard from "../components/ItemCard";
+import "../styles/shop.css";
 import sporeStashLogo from "../img/Final_deer_flat.png";
 
 function Shop(props) {
   const [displayedItems, setDisplayedItems] = useState([]);
-  const [spores, setSpores] = useState([]);
-  const [more, setMore] = useState([]);
+  const [cubensis, setCubensis] = useState([]);
+  const [exotic, setExotic] = useState([]);
+  const [merch, setMerch] = useState([]);
+  const [activeTab, setActiveTab] = useState("cubensis");
 
   useEffect(() => {
     let mounting = true;
     axios
       .get(`${process.env.REACT_APP_SERVER_URL}/items`)
       .then((res) => {
-        const spores = [];
-        const more = [];
+        const cubensisItems = [];
+        const exoticItems = [];
+        const merchItems = [];
         res.data.forEach((item) => {
-          if (item.item_category === "spore") {
-            spores.push(item);
+          if (item.item_category === "cubensis") {
+            cubensisItems.push(item);
+          } else if (item.item_category === "exotic") {
+            exoticItems.push(item);
           } else {
-            more.push(item);
+            merchItems.push(item);
           }
         });
 
         if (mounting) {
-          setDisplayedItems(spores);
-          setSpores(spores);
-          setMore(more);
+          setDisplayedItems(cubensisItems);
+          setCubensis(cubensisItems);
+          setExotic(exoticItems);
+          setMerch(merchItems);
           //   handleScrollPosition();
         }
       })
@@ -36,20 +43,56 @@ function Shop(props) {
     return () => (mounting = false);
   }, []);
 
-  function handleSporeClick(e) {
-    setDisplayedItems(spores);
+  function handleCubensisClick(e) {
+    setDisplayedItems(cubensis);
+    if (activeTab !== "cubensis") {
+      setActiveTab("cubensis");
+    }
+  }
+  function handleExoticClick(e) {
+    setDisplayedItems(exotic);
+    if (activeTab !== "exotic") {
+      setActiveTab("exotic");
+    }
   }
 
-  function handleMoreClick(e) {
-    setDisplayedItems(more);
+  function handleMerchClick(e) {
+    setDisplayedItems(merch);
+    if (activeTab !== "merch") {
+      setActiveTab("merch");
+    }
   }
 
   return (
     <div className="shop-container">
-      <h1>Shop</h1>
+      <img src={sporeStashLogo} alt="Spore Stash Logo" className="main-logo" />
       <div className="shop-buttons">
-        <button onClick={handleSporeClick}>Spores</button>
-        <button onClick={handleMoreClick}>More</button>
+        <button
+          onClick={handleCubensisClick}
+          className={
+            activeTab === "cubensis"
+              ? "cubensis-button active"
+              : "cubensis-button"
+          }
+        >
+          Cubensis
+        </button>
+        <button
+          onClick={handleExoticClick}
+          className={
+            activeTab === "exotic" ? "exotic-button active" : "exotic-button"
+          }
+        >
+          Exotic
+        </button>
+        <button
+          onClick={handleMerchClick}
+          className={
+            activeTab === "merch" ? "merch-button active" : "merch-button"
+          }
+        >
+          Merch
+        </button>
       </div>
       <div className="shop-cards">
         {displayedItems.map((item) => {

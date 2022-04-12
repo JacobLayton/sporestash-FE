@@ -45,8 +45,10 @@ const ItemCard = (props) => {
         <p>{props.item.item_blurb}</p>
         <span className="item-price">${props.item.item_price}</span>
         <div className="card-buttons">
-          <button>More Info</button>
-          <button onClick={handleAddToCart}>Add To Cart</button>
+          <button className="more-info-btn">More Info</button>
+          <button className="add-cart-btn" onClick={handleAddToCart}>
+            Add To Cart
+          </button>
         </div>
       </div>
     </div>

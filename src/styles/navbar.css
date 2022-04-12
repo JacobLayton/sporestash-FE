@@ -1,7 +1,27 @@
 .navbar-container {
+  border-bottom: 1px solid var(--purple);
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2% 3%;
 }
 
 .navbar-container h1 {
   font-family: NationalForestRegular;
+  color: var(--purple);
+  margin: 0;
+  position: relative;
+  top: 3px;
+}
+
+.nav-hamburger {
+  color: var(--purple);
+  height: 28px;
+  width: 28px;
+}
+
+.nav-cart {
+  color: var(--purple);
+  height: 30px;
+  width: 30px;
 }

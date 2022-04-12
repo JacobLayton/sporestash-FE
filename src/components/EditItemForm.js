@@ -27,7 +27,7 @@ function EditItemForm(props) {
     };
     if (value === "spore") {
       updatedFormValues.item_price = "";
-      updatedFormValues.display_size = "";
+      updatedFormValues.display_size = false;
       updatedFormValues.sizes_available = [];
     }
     if (value === "more") {
@@ -148,8 +148,9 @@ function EditItemForm(props) {
                 value={formValues.item_category}
                 onChange={handleCategoryChange}
               >
-                <MenuItem value={"spore"}>Spore</MenuItem>
-                <MenuItem value={"more"}>More</MenuItem>
+                <MenuItem value={"cubensis"}>Cubensis</MenuItem>
+                <MenuItem value={"exotic"}>Exotic</MenuItem>
+                <MenuItem value={"merch"}>Merch</MenuItem>
               </Select>
             </FormControl>
             <TextField

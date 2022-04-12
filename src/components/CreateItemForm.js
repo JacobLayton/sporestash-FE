@@ -45,7 +45,7 @@ const defaultValues = {
   print_quantity: "",
   syringe_quantity: "",
   hide_type: null,
-  display_size: "",
+  display_size: false,
   sizes_available: [],
 };
 
@@ -62,7 +62,7 @@ function CreateItemForm() {
     };
     if (value === "spore") {
       updatedFormValues.item_price = "";
-      updatedFormValues.display_size = "";
+      updatedFormValues.display_size = false;
       updatedFormValues.sizes_available = [];
     }
     if (value === "more") {
@@ -140,7 +140,7 @@ function CreateItemForm() {
         formValuesCopy[formObjKeys[i]] = null;
       }
     }
-    if (formValues.sizes_available.length > 0) {
+    if (formValues.sizes_available && formValues.sizes_available.length > 0) {
       formValuesCopy.sizes_available = JSON.stringify(
         formValues.sizes_available
       );
@@ -180,8 +180,9 @@ function CreateItemForm() {
                 value={formValues.item_category}
                 onChange={handleCategoryChange}
               >
-                <MenuItem value={"spore"}>Spore</MenuItem>
-                <MenuItem value={"more"}>More</MenuItem>
+                <MenuItem value={"cubensis"}>Cubensis</MenuItem>
+                <MenuItem value={"exotic"}>Exotic</MenuItem>
+                <MenuItem value={"merch"}>Merch</MenuItem>
               </Select>
             </FormControl>
             <TextField

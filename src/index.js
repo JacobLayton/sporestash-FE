@@ -23,7 +23,6 @@ ReactDOM.render(
       <App />
       {/* </Auth0ProviderWithHistory> */}
     </ThemeProvider>
-    ,
   </BrowserRouter>,
   rootElement
 );

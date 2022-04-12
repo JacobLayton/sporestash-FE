@@ -9,5 +9,5 @@
 .menu-container .MuiPaper-root {
   border: 1px solid red;
   height: 30vh;
-  border-radius: 0 0 30px;
+  border-radius: 0 0 30px 30px;
 }
