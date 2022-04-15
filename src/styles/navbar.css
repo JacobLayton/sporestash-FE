@@ -18,10 +18,21 @@
   color: var(--purple);
   height: 28px;
   width: 28px;
+  cursor: pointer;
 }
 
 .nav-cart {
   color: var(--purple);
   height: 30px;
   width: 30px;
+  cursor: pointer;
+}
+
+.MuiBadge-badge {
+  top: 3px !important;
+  right: 5px !important;
+  color: black;
+  background-color: var(--purple);
+  border: 1px solid black;
+  padding: 0 !important;
 }
