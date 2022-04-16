@@ -13,7 +13,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow: hidden; /* Hide scrollbars */
+  /* hide scrollbar */
+  overflow: hidden;
 }
 
 code {

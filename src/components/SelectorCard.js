@@ -12,14 +12,8 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
-// const defaultValues = {
-//   order_type: "",
-//   order_quantity: "",
-// };
-
 function SelectorCard(props) {
   const { onClose, selectedValue, open } = props;
-  //   const [formValues, setFormValues] = useState(defaultValues);
 
   const handleClose = () => {
     onClose(selectedValue);

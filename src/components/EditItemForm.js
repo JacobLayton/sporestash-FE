@@ -25,12 +25,12 @@ function EditItemForm(props) {
       ...formValues,
       [name]: value,
     };
-    if (value === "spore") {
+    if (value === "cubensis" || value === "exotic") {
       updatedFormValues.item_price = "";
       updatedFormValues.display_size = false;
       updatedFormValues.sizes_available = [];
     }
-    if (value === "more") {
+    if (value === "merch") {
       updatedFormValues.swab_available = false;
       updatedFormValues.print_available = false;
       updatedFormValues.syringe_available = false;
@@ -179,7 +179,7 @@ function EditItemForm(props) {
               value={formValues.item_description}
               onChange={handleInputChange}
             />
-            {formValues.item_category === "more" ? (
+            {formValues.item_category === "merch" ? (
               <TextField
                 id="price-input"
                 name="item_price"
@@ -189,7 +189,7 @@ function EditItemForm(props) {
                 onChange={handleInputChange}
               />
             ) : null}
-            {formValues.item_category === "more" ? (
+            {formValues.item_category === "merch" ? (
               <TextField
                 id="quantity-input"
                 name="item_quantity"
@@ -239,7 +239,8 @@ function EditItemForm(props) {
                 />
               </RadioGroup>
             </FormControl>
-            {formValues.item_category === "spore" ? (
+            {formValues.item_category === "cubensis" ||
+            formValues.item_category === "exotic" ? (
               <FormControl>
                 <FormLabel>Swab Available?</FormLabel>
                 <RadioGroup
@@ -282,7 +283,8 @@ function EditItemForm(props) {
                 />
               </Grid>
             ) : null}
-            {formValues.item_category === "spore" ? (
+            {formValues.item_category === "cubensis" ||
+            formValues.item_category === "exotic" ? (
               <FormControl>
                 <FormLabel>Print Available?</FormLabel>
                 <RadioGroup
@@ -325,7 +327,8 @@ function EditItemForm(props) {
                 />
               </Grid>
             ) : null}
-            {formValues.item_category === "spore" ? (
+            {formValues.item_category === "cubensis" ||
+            formValues.item_category === "exotic" ? (
               <FormControl>
                 <FormLabel>Syringe Available?</FormLabel>
                 <RadioGroup
@@ -368,7 +371,7 @@ function EditItemForm(props) {
                 />
               </Grid>
             ) : null}
-            {formValues.item_category === "more" ? (
+            {formValues.item_category === "merch" ? (
               <FormControl>
                 <FormLabel>Display Size?</FormLabel>
                 <RadioGroup

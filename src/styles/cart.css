@@ -7,7 +7,83 @@
 } */
 
 .cart-container .MuiPaper-root {
-  border: 1px solid red;
-  height: 300px;
-  border-radius: 0 0 0 30px;
+  border-left: 1px solid var(--purple);
+  border-bottom: 1px solid var(--purple);
+  border-radius: 0 0 0 var(--border-radius);
+  max-height: 90vh;
+  max-width: 75vw;
+  background-image: none;
+}
+
+.cart-x {
+  color: var(--purple);
+  height: 25px;
+  width: 25px;
+  display: block;
+  position: absolute;
+  right: 4%;
+  top: 2%;
+}
+.cart-x:hover {
+  cursor: pointer;
+}
+
+.cart-container h1 {
+  margin: 12% 0 4% 0;
+  text-align: center;
+  font-size: 22px;
+}
+
+.cart-contents {
+  text-align: center;
+}
+.cart-items {
+  max-height: 60vh;
+  overflow-y: auto;
+  /* scrollbar-width: thin;
+  scrollbar-color: black; */
+}
+
+.cart-checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cart-checkout h2 {
+  font-size: 22px;
+  color: var(--orange);
+  margin: 6%;
+}
+.cart-checkout .checkout-button {
+  height: 48px;
+  width: 60%;
+  border: 1px solid var(--orange);
+  background-color: var(--orange);
+  color: black;
+  font-size: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin: 0;
+}
+.cart-checkout .checkout-button:hover {
+  background-color: black;
+  color: var(--orange);
+}
+
+.cart-checkout .back-shop-button {
+  height: 48px;
+  width: 60%;
+  border: 1px solid var(--purple);
+  background-color: black;
+  color: var(--purple);
+  font-size: 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  margin: 6% 0 6% 0;
+}
+.cart-checkout .back-shop-button:hover {
+  background-color: var(--purple);
+  color: black;
 }

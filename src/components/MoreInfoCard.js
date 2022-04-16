@@ -2,7 +2,6 @@ import React, { useState, useEffect, forwardRef } from "react";
 import { Dialog } from "@mui/material";
 import { Slide } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { DialogTitle } from "@mui/material";
 import { useMediaQuery } from "@mui/material";
 import theme from "../theme";
 import "../styles/more-info-card.css";
@@ -51,17 +50,6 @@ function MoreInfoCard(props) {
         </div>
       </div>
     </Dialog>
-    // <Drawer
-    //   anchor={anchor}
-    //   open={props.displayMenu}
-    //   onClose={props.toggleMenu}
-    //   className="menu-container"
-    // >
-    //   <MenuItem>FAQs</MenuItem>
-    //   <MenuItem>Contact Us</MenuItem>
-    //   <MenuItem>Terms and Conditions</MenuItem>
-    //   <MenuItem>Privacy Statement</MenuItem>
-    // </Drawer>
   );
 }
 

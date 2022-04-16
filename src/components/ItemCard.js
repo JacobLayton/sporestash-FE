@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import MoreInfoCard from "../components/MoreInfoCard";
 import SelectorCard from "../components/SelectorCard";
 import "../styles/item-card.css";
-// import moment from 'moment';
-import { Link } from "react-router-dom";
-// import { titleToUrlHelper } from '../helpers/helperFunctions.js';
 
 const defaultValues = {
   order_type: "",
@@ -31,14 +28,13 @@ const ItemCard = (props) => {
     setSelectorOpen(false);
   }
   function handleAddToCart(e) {
-    console.log("adding to cart");
     const itemObj = {
       item_id: props.item.item_id,
-      // cart_quantity: 1,
+      order_type: formValues.order_type,
+      id: `${props.item.item_id}-${formValues.order_type}`,
       item_name: props.item.item_name,
       item_price: props.item.item_price,
       image_url: props.item.image_url,
-      order_type: formValues.order_type,
       cart_quantity: formValues.order_quantity,
     };
     let cartCopy = [...props.cart];
@@ -73,7 +69,7 @@ const ItemCard = (props) => {
 
   return (
     <div className="item-container">
-      <img src={props.item.image_url} />
+      <img src={props.item.image_url} alt="Product" />
       <div className="card-info">
         <h3>{props.item.item_name}</h3>
         <p>{props.item.item_blurb}</p>
@@ -82,7 +78,6 @@ const ItemCard = (props) => {
           <button className="more-info-btn" onClick={handleClickOpen}>
             More Info
           </button>
-          {/* <button className="add-cart-btn" onClick={handleAddToCart}> */}
           <button className="add-cart-btn" onClick={handleSelectorOpen}>
             Add To Cart
           </button>

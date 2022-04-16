@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Drawer } from "@mui/material";
 import { MenuItem } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMediaQuery } from "@mui/material";
 import theme from "../theme";
 import "../styles/menu.css";
@@ -19,10 +20,17 @@ function Menu(props) {
       onClose={props.toggleMenu}
       className="menu-container"
     >
-      <MenuItem>FAQs</MenuItem>
-      <MenuItem>Contact Us</MenuItem>
-      <MenuItem>Terms and Conditions</MenuItem>
-      <MenuItem>Privacy Statement</MenuItem>
+      <FontAwesomeIcon
+        icon={["fas", "x"]}
+        className="menu-x"
+        onClick={props.toggleMenu}
+      />
+      <div className="menu-items">
+        <MenuItem>FAQs</MenuItem>
+        <MenuItem>Contact Us</MenuItem>
+        <MenuItem>Terms and Conditions</MenuItem>
+        <MenuItem>Privacy Statement</MenuItem>
+      </div>
     </Drawer>
   );
 }
