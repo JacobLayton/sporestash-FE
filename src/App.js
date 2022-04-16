@@ -38,7 +38,6 @@ function App(props) {
   const [displayCart, setDisplayCart] = useState(false);
   const [cart, setCart] = useState([]);
   const mobileDown = useMediaQuery("(max-width:600px)");
-  console.log("mobileDown: ", mobileDown);
   let localCart = localStorage.getItem("cart");
 
   useEffect(() => {
@@ -70,7 +69,11 @@ function App(props) {
         <Route
           element={
             <>
-              <Navbar toggleMenu={toggleMenu} toggleCart={toggleCart} />
+              <Navbar
+                toggleMenu={toggleMenu}
+                toggleCart={toggleCart}
+                cartData={cart}
+              />
               <Menu
                 displayMenu={displayMenu}
                 toggleMenu={toggleMenu}
