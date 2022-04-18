@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
+import DesktopCart from "./components/DesktopCart";
 import Footer from "./components/Footer";
 import Admin from "./pages/Admin";
 import AdminOrders from "./pages/AdminOrders";
@@ -36,6 +37,7 @@ function App(props) {
   // Nav
   const [displayMenu, setDisplayMenu] = useState(false);
   const [displayCart, setDisplayCart] = useState(false);
+  const [displayDesktopCart, setDisplayDesktopCart] = useState(false);
   const [cart, setCart] = useState([]);
   const mobileDown = useMediaQuery("(max-width:600px)");
   let localCart = localStorage.getItem("cart");
@@ -61,6 +63,15 @@ function App(props) {
       setDisplayCart(true);
     }
   }
+  function toggleDesktopCart() {
+    console.log("clicked: ", displayDesktopCart);
+    if (displayDesktopCart) {
+      setDisplayDesktopCart(false);
+    } else {
+      setDisplayDesktopCart(true);
+    }
+    console.log("after: ", displayDesktopCart);
+  }
 
   return (
     // <AuthContext.Provider value={{ authTokens, setAuthTokens: setTokens }}>
@@ -72,6 +83,7 @@ function App(props) {
               <Navbar
                 toggleMenu={toggleMenu}
                 toggleCart={toggleCart}
+                toggleDesktopCart={toggleDesktopCart}
                 cartData={cart}
               />
               <Menu
@@ -82,6 +94,12 @@ function App(props) {
               <Cart
                 displayCart={displayCart}
                 toggleCart={toggleCart}
+                cart={cart}
+                setCart={setCart}
+              />
+              <DesktopCart
+                displayDesktopCart={displayDesktopCart}
+                toggleDesktopCart={toggleDesktopCart}
                 cart={cart}
                 setCart={setCart}
               />

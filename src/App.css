@@ -43,8 +43,19 @@
 @import url("https://fonts.googleapis.com/css2?family=NTR&display=swap");
 
 .App {
-  /* text-align: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /* max-height: 100vh;
   max-width: 100vw; */
   background-color: black;
+  min-height: 100vh;
 }
+
+/* @media (max-width: 599px) {
+  .App {
+    position: absolute;
+    overflow: auto;
+  }
+} */
