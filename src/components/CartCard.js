@@ -70,6 +70,7 @@ function CartCard(props) {
                   style: {
                     fontSize: "12px",
                     marginTop: "-5px",
+                    borderRadius: "7px",
                   },
                 }}
                 InputLabelProps={{

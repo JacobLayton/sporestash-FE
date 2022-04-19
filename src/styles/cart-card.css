@@ -15,11 +15,13 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 2% 0 2% 2%;
+  width: 100%;
 }
 .cart-card-container h3 {
   margin: 0;
   font-size: 16px;
   line-height: 1;
+  text-align: left;
 }
 
 .cart-card-container span {
