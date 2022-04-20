@@ -23,6 +23,16 @@ function Navbar(props) {
           />
         </Badge>
       </div>
+      <div className="desktop-cart-components">
+        <Badge badgeContent={props.cartData.length}>
+          <FontAwesomeIcon
+            icon={["fas", "cart-shopping"]}
+            size="2x"
+            className="desktop-nav-cart"
+            onClick={props.toggleDesktopCart}
+          />
+        </Badge>
+      </div>
     </div>
   );
 }

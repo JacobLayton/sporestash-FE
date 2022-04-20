@@ -3,7 +3,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2% 3%;
+  padding: 2vw 3vw;
+  width: 100%;
 }
 
 .navbar-container h1 {
@@ -12,6 +13,11 @@
   margin: 0;
   position: relative;
   top: 3px;
+  font-size: 8.5vw;
+}
+
+.desktop-cart-components {
+  display: none;
 }
 
 .nav-hamburger {
@@ -35,4 +41,45 @@
   background-color: var(--purple);
   border: 1px solid black;
   padding: 0 !important;
+}
+
+@media (min-width: 600px) {
+  .navbar-container {
+    padding: 0.5vw 2vw;
+  }
+  .navbar-container h1 {
+    font-size: 5vw;
+  }
+  .nav-hamburger {
+    height: 4vw;
+    width: 4vw;
+  }
+  .nav-cart {
+    height: 4vw;
+    width: 4vw;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar-container {
+    padding: 0 1vw;
+  }
+  .navbar-container h1 {
+    font-size: 3vw;
+  }
+  .cart-components {
+    display: none;
+  }
+  .desktop-cart-components {
+    display: inline-block;
+  }
+  .nav-hamburger {
+    height: 1.8vw;
+    width: 1.8vw;
+  }
+  .desktop-nav-cart {
+    height: 1.8vw;
+    width: 1.8vw;
+    color: var(--purple);
+    cursor: pointer;
+  }
 }
