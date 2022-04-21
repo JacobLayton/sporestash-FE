@@ -4,7 +4,9 @@
   height: 40vw;
   margin-bottom: 10px;
 }
-
+.desktop-card-contents {
+  display: none;
+}
 .item-container img {
   height: auto;
   width: 50%;
@@ -23,22 +25,25 @@
 .item-container h3 {
   color: var(--purple);
   margin: 0;
-  font-size: 16px;
+  /* font-size: 16px; */
+  font-size: 4.2vw;
   line-height: 1.2;
+}
+.item-card-deets {
+  display: none;
 }
 .item-container p {
   color: var(--purple);
   margin: 0;
-  font-size: 11px;
+  /* font-size: 11px; */
+  font-size: 2.9vw;
+  line-height: 1.2em;
 }
 .item-container span {
   color: var(--orange);
   margin: 0;
-  font-size: 11px;
-}
-
-.card-buttons {
-  display: flex;
+  /* font-size: 11px; */
+  font-size: 2.9vw;
 }
 
 .card-buttons {
@@ -47,14 +52,17 @@
 }
 
 .more-info-btn {
-  height: 19px;
-  width: 67px;
+  /* height: 19px; */
+  height: 5vw;
+  width: 46%;
   border: 1px solid var(--purple);
   background-color: black;
   color: var(--purple);
-  font-size: 10px;
+  /* font-size: 10px; */
+  font-size: 2.8vw;
   border-radius: 3px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .more-info-btn:hover {
@@ -63,17 +71,135 @@
 }
 
 .add-cart-btn {
-  height: 19px;
-  width: 67px;
+  /* height: 19px; */
+  height: 5vw;
+  width: 46%;
   border: 1px solid var(--orange);
   background-color: var(--orange);
   color: black;
-  font-size: 10px;
+  /* font-size: 10px; */
+  font-size: 2.8vw;
   border-radius: 3px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .add-cart-btn:hover {
   background-color: black;
   color: var(--orange);
+}
+
+@media (min-width: 600px) {
+  .item-container {
+    height: 28vw;
+  }
+  .card-info {
+    justify-content: space-between;
+    padding: 2%;
+  }
+  .item-container h3 {
+    /* font-size: 16px; */
+    font-size: 2.8vw;
+  }
+  .item-container p {
+    font-size: 1.8vw;
+  }
+  .item-container span {
+    font-size: 1.8vw;
+  }
+  .more-info-btn {
+    height: 4vw;
+    font-size: 1.8vw;
+  }
+  .add-cart-btn {
+    height: 4vw;
+    font-size: 1.8vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .item-container {
+    height: 25vw;
+    border: 1px solid var(--purple);
+    border-radius: var(--border-radius);
+    padding: 1.5%;
+  }
+  .item-container img {
+    min-width: 37%;
+    height: 100%;
+    width: 37%;
+  }
+  .card-info {
+    justify-content: space-between;
+    padding: 0 1vw;
+  }
+  .item-container h3 {
+    /* font-size: 16px; */
+    font-size: 30px;
+  }
+  .item-card-blurb {
+    display: none;
+  }
+  .item-card-deets {
+    display: block;
+  }
+  .item-container p {
+    font-size: 1.1vw;
+  }
+  .item-container span {
+    font-size: 1.8vw;
+  }
+  .item-price {
+    display: none;
+  }
+  .card-buttons {
+    display: none;
+  }
+  .more-info-btn {
+    display: none;
+  }
+  .desktop-card-contents {
+    display: flex;
+  }
+  .desktop-card-left {
+    width: 50%;
+  }
+  .desktop-card-left .spacer {
+    margin-top: 1vw;
+  }
+  .desktop-card-left .MuiFormControl-root {
+    width: 70%;
+    height: 45px;
+  }
+  .desktop-card-left .MuiOutlinedInput-root {
+    border-radius: 3px;
+  }
+  .desktop-card-right {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 0 2px 3px 0;
+  }
+  .desktop-price {
+    padding-right: 10px;
+    font-size: 2vh !important;
+  }
+  .desktop-add-cart-btn {
+    /* height: 19px; */
+    height: 42px;
+    width: 70%;
+    border: 1px solid var(--orange);
+    background-color: var(--orange);
+    color: black;
+    /* font-size: 10px; */
+    font-size: 1vw;
+    border-radius: 3px;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .desktop-add-cart-btn:hover {
+    background-color: black;
+    color: var(--orange);
+  }
 }

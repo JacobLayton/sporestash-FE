@@ -14,7 +14,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* hide scrollbar */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 code {
@@ -25,3 +25,10 @@ code {
 .NationalForestRegular {
   font-family: NationalForestRegular;
 }
+
+/* @media (max-width: 599px) {
+  body {
+    overflow: hidden;
+    position: relative;
+  }
+} */

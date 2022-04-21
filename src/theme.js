@@ -37,9 +37,9 @@ const theme = createTheme({
   // typography: {
   //   fontFamily: "NTR",
   // },
-  // shape: {
-  //   borderRadius: 15,
-  // },
+  shape: {
+    borderRadius: "var(--border-radius)",
+  },
   overrides: {
     MuiPaper: {
       root: {

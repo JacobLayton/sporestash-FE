@@ -23,18 +23,18 @@ function MoreInfoCard(props) {
       open={open}
       TransitionComponent={Transition}
       className="more-info-card"
-      PaperProps={{
-        style: {
-          margin: "0",
-          width: "92vw",
-          height: "73vh",
-          border: "1px solid var(--purple)",
-          borderRadius: "var(--border-radius)",
-          backgroundColor: "black",
-          padding: "5%",
-          backgroundImage: "none",
-        },
-      }}
+      // PaperProps={{
+      //   style: {
+      //     margin: "0",
+      //     width: "92vw",
+      //     height: "73vh",
+      //     border: "1px solid var(--purple)",
+      //     borderRadius: "var(--border-radius)",
+      //     backgroundColor: "black",
+      //     padding: "5%",
+      //     backgroundImage: "none",
+      //   },
+      // }}
     >
       <div className="info-card-elements">
         <FontAwesomeIcon

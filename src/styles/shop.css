@@ -9,6 +9,7 @@
 .shop-container .main-logo {
   width: 46vw;
   height: auto;
+  margin: 2vh 0 1.5vh 0;
 }
 
 .shop-buttons {
@@ -60,4 +61,68 @@
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   margin: 0 4%;
   padding: 2% 2%;
+}
+
+@media (min-width: 600px) {
+  .shop-container {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .shop-container .main-logo {
+    width: 35vw;
+  }
+  .shop-buttons {
+    padding: 0 15%;
+  }
+  .shop-cards {
+    margin: 0 15%;
+  }
+}
+@media (min-width: 1200px) {
+  .shop-container {
+    width: 80vw;
+    margin: 0 auto;
+  }
+  .shop-container .main-logo {
+    width: 20vw;
+    margin: 4vh 0 2vh 0;
+  }
+  .shop-buttons {
+    padding: 0 10%;
+    width: 100%;
+    margin-bottom: 1px;
+    margin-left: 2%;
+  }
+  .cubensis-button {
+    width: 12%;
+    border: 1px solid var(--purple);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    /* border-bottom: none; */
+    height: 35px;
+    line-height: 1.6;
+    margin-right: 2px;
+  }
+  .exotic-button {
+    width: 12%;
+    border: 1px solid var(--purple);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    height: 35px;
+    /* border-bottom: none; */
+    line-height: 1.6;
+    margin-right: 2px;
+  }
+  .merch-button {
+    width: 12%;
+    border: 1px solid var(--purple);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    height: 35px;
+    /* border-bottom: none; */
+    line-height: 1.6;
+  }
+  .shop-cards {
+    margin: 0 10%;
+    /* border: 1px solid blue; */
+    border: none;
+    padding: 0;
+  }
 }

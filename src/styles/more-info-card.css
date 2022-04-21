@@ -1,12 +1,13 @@
-/* .MuiDialog-paper {
+.MuiDialog-paper {
   margin: 0;
   width: 92vw;
-  height: 73vh;
+  max-height: 80vh;
   border: 1px solid var(--purple);
   border-radius: var(--border-radius);
   background-color: black;
   padding: 5%;
-} */
+  background-image: none !important;
+}
 
 .info-card-elements {
   display: flex;
@@ -51,6 +52,7 @@
 
 .info-card-btn-container {
   text-align: center;
+  margin-top: 1vh;
 }
 
 .info-card-elements button {
@@ -67,4 +69,18 @@
 .info-card-elements button:hover {
   background-color: black;
   color: var(--orange);
+}
+
+@media (min-width: 600px) {
+  .MuiDialog-paper {
+    width: 58vw;
+  }
+  .info-card-elements img {
+    width: 100%;
+    height: auto;
+    max-height: 33%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    margin: 7% auto 0;
+  }
 }

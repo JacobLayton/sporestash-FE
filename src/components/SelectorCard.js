@@ -32,18 +32,18 @@ function SelectorCard(props) {
       onClose={handleClose}
       open={open}
       TransitionComponent={Transition}
-      PaperProps={{
-        style: {
-          margin: "0",
-          width: "92vw",
-          height: "50vh",
-          border: "1px solid var(--purple)",
-          borderRadius: "var(--border-radius)",
-          backgroundColor: "black",
-          padding: "5%",
-          backgroundImage: "none",
-        },
-      }}
+      // PaperProps={{
+      //   style: {
+      //     margin: "0",
+      //     width: "92vw",
+      //     height: "50vh",
+      //     border: "1px solid var(--purple)",
+      //     borderRadius: "var(--border-radius)",
+      //     backgroundColor: "black",
+      //     padding: "5%",
+      //     backgroundImage: "none",
+      //   },
+      // }}
     >
       <div className="selector-card-elements">
         <FontAwesomeIcon
@@ -62,7 +62,6 @@ function SelectorCard(props) {
             label="Type"
             value={props.formValues.order_type}
             onChange={handleSelectChange}
-            // sx={{ borderRadius: 30 }}
           >
             <MenuItem value={"swab"}>Swab</MenuItem>
             <MenuItem value={"print"}>Print</MenuItem>
@@ -71,6 +70,7 @@ function SelectorCard(props) {
             </MenuItem>
           </Select>
         </FormControl>
+        <div className="spacer" />
         <FormControl className="selector-card-inputs">
           <InputLabel id="quantity-label">Quantity</InputLabel>
           <Select

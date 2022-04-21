@@ -4,6 +4,8 @@
   min-height: 9vh;
   bottom: 0;
   width: 100%;
+  position: relative;
+  bottom: 0;
 }
 
 .footer-text {
@@ -33,4 +35,10 @@
   display: block;
   font-size: 9px;
   color: var(--purple);
+}
+
+@media (min-width: 600px) {
+  .footer-copyright span {
+    font-size: 11px;
+  }
 }

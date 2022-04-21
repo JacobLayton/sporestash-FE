@@ -22,7 +22,7 @@ const AdminCard = (props) => {
         <h3>{props.item.item_name}</h3>
         <span className="item-price">${props.item.item_price}</span>
         <div className="card-buttons">
-          <button onClick={handleDelete}>Delete Item</button>
+          {/* <button onClick={handleDelete}>Delete Item</button> */}
           <Link to={`/edit-item/${props.item.item_id}`}>
             <button>Edit Item</button>
           </Link>

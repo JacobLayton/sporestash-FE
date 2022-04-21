@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import MoreInfoCard from "../components/MoreInfoCard";
 import SelectorCard from "../components/SelectorCard";
+import { Select } from "@mui/material";
+import { FormControl } from "@mui/material";
+import { InputLabel } from "@mui/material";
+import { MenuItem } from "@mui/material";
 import "../styles/item-card.css";
 
 const defaultValues = {
@@ -27,6 +31,14 @@ const ItemCard = (props) => {
   function handleSelectorClose() {
     setSelectorOpen(false);
   }
+  const handleSelectChange = (e) => {
+    let { name, value } = e.target;
+    const updatedFormValues = {
+      ...formValues,
+      [name]: value,
+    };
+    setFormValues(updatedFormValues);
+  };
   function handleAddToCart(e) {
     const itemObj = {
       item_id: props.item.item_id,
@@ -72,7 +84,8 @@ const ItemCard = (props) => {
       <img src={props.item.image_url} alt="Product" />
       <div className="card-info">
         <h3>{props.item.item_name}</h3>
-        <p>{props.item.item_blurb}</p>
+        <p className="item-card-blurb">{props.item.item_blurb}</p>
+        <p className="item-card-deets">{props.item.item_description}</p>
         <span className="item-price">${props.item.item_price}</span>
         <div className="card-buttons">
           <button className="more-info-btn" onClick={handleClickOpen}>
@@ -81,6 +94,60 @@ const ItemCard = (props) => {
           <button className="add-cart-btn" onClick={handleSelectorOpen}>
             Add To Cart
           </button>
+        </div>
+        <div className="desktop-card-contents">
+          <div className="desktop-card-left">
+            <FormControl className="desktop-card-inputs" size="small">
+              <InputLabel id="type-label">Type</InputLabel>
+              <Select
+                id="desktop-order-type"
+                name="order_type"
+                labelId="type-label"
+                label="Type"
+                value={formValues.order_type}
+                onChange={handleSelectChange}
+              >
+                <MenuItem value={"swab"}>
+                  Swab (${props.item.swab_price})
+                </MenuItem>
+                <MenuItem value={"print"}>
+                  Print (${props.item.print_price})
+                </MenuItem>
+                <MenuItem value={"syring"}>
+                  Syringe (${props.item.syringe_price})
+                </MenuItem>
+              </Select>
+            </FormControl>
+            <div className="spacer" />
+            <FormControl className="desktop-card-inputs" size="small">
+              <InputLabel id="desktop-quantity-label">Quantity</InputLabel>
+              <Select
+                id="order-quantity"
+                name="order_quantity"
+                labelId="quantity-label"
+                label="Quantity"
+                value={formValues.order_quantity}
+                onChange={handleSelectChange}
+              >
+                <MenuItem value={"1"}>1</MenuItem>
+                <MenuItem value={"2"}>2</MenuItem>
+                <MenuItem value={"3"}>3</MenuItem>
+                <MenuItem value={"4"}>4</MenuItem>
+                <MenuItem value={"5"}>5</MenuItem>
+                <MenuItem value={"6"}>6</MenuItem>
+                <MenuItem value={"7"}>7</MenuItem>
+                <MenuItem value={"8"}>8</MenuItem>
+                <MenuItem value={"9"}>9</MenuItem>
+                <MenuItem value={"10"}>10</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+          <div className="desktop-card-right">
+            <span className="desktop-price">${props.item.item_price}</span>
+            <button className="desktop-add-cart-btn" onClick={handleAddToCart}>
+              Add To Cart
+            </button>
+          </div>
         </div>
       </div>
       <MoreInfoCard

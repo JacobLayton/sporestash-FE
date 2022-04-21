@@ -16,7 +16,8 @@
   margin: 0;
   color: var(--purple);
   font-family: NationalForestRegular;
-  font-size: 50px;
+  /* font-size: 50px; */
+  font-size: 13vw;
   font-weight: 100;
 }
 
@@ -51,16 +52,25 @@
   }
   .landing-container h1 {
     font-size: 60px;
+    font-size: 8vw;
   }
 }
 
 @media (min-width: 1200px) {
+  .landing-container {
+    max-width: 2500px;
+  }
   .landing-container img {
     height: auto;
-    width: 33vw;
-    margin: 5vh 0;
+    width: 28vw;
+    max-width: 600px;
+    margin: 4vh 0 5vh;
   }
   .landing-container h1 {
-    font-size: 60px;
+    font-size: 3.8vw;
+  }
+  .landing-button {
+    font-size: 38px;
+    line-height: 60px;
   }
 }
