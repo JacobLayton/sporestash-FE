@@ -1,0 +1,123 @@
+.admin-container {
+  border: 1px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 3%;
+}
+.admin-buttons {
+  border: 1px solid red;
+}
+
+.admin-cards-container {
+  border: 1px solid var(--purple);
+  border-radius: var(--border-radius);
+  padding: 2%;
+}
+
+.admin-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5vh 0;
+}
+
+.create-item-button {
+  /* height: 19px; */
+  height: 30px;
+  width: 40vw;
+  border: 1px solid var(--purple);
+  background-color: black;
+  color: var(--purple);
+  /* font-size: 10px; */
+  font-size: 2.8vw;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.create-item-button:hover {
+  background-color: var(--purple);
+  color: black;
+}
+
+.logout-button {
+  /* height: 19px; */
+  height: 30px;
+  width: 40vw;
+  border: 1px solid var(--orange);
+  background-color: black;
+  color: var(--orange);
+  /* font-size: 10px; */
+  font-size: 2.8vw;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.logout-button:hover {
+  background-color: var(--orange);
+  color: black;
+}
+
+.admin-item-container {
+  margin-bottom: 5px;
+}
+
+.edit-item-button {
+  /* height: 19px; */
+  height: 6vw;
+  width: 30vw;
+  border: 1px solid var(--purple);
+  background-color: black;
+  color: var(--purple);
+  /* font-size: 10px; */
+  font-size: 3.5vw;
+  border-radius: 3px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.edit-item-button:hover {
+  background-color: var(--purple);
+  color: black;
+}
+
+@media (min-width: 600px) {
+  .create-item-button {
+    height: 40px;
+    width: 20vw;
+    font-size: 2vw;
+  }
+  .logout-button {
+    /* height: 19px; */
+    height: 40px;
+    width: 20vw;
+    font-size: 2vw;
+  }
+  .edit-item-button {
+    height: 4vw;
+    width: 20vw;
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .create-item-button {
+    height: 40px;
+    width: 20vw;
+    font-size: 2vw;
+  }
+  .logout-button {
+    /* height: 19px; */
+    height: 40px;
+    width: 20vw;
+    font-size: 2vw;
+  }
+  .edit-item-button {
+    height: 4vw;
+    width: 10vw;
+    font-size: 2vw;
+  }
+}

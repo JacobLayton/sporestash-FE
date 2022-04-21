@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -158,7 +159,6 @@ function CreateItemForm() {
   };
   return (
     <div className="edit-item-container">
-      <h1>CreateItemForm</h1>
       <form onSubmit={handleSubmit}>
         <Grid>
           <Grid container direction="column">
@@ -169,6 +169,7 @@ function CreateItemForm() {
               type="text"
               value={formValues.item_name}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <FormControl fullWidth>
               <InputLabel id="category-label">Category</InputLabel>
@@ -179,6 +180,7 @@ function CreateItemForm() {
                 label="Category"
                 value={formValues.item_category}
                 onChange={handleCategoryChange}
+                sx={{ m: 1 }}
               >
                 <MenuItem value={"cubensis"}>Cubensis</MenuItem>
                 <MenuItem value={"exotic"}>Exotic</MenuItem>
@@ -192,6 +194,7 @@ function CreateItemForm() {
               type="text"
               value={formValues.image_url}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <TextField
               id="blurb-input"
@@ -200,6 +203,7 @@ function CreateItemForm() {
               type="text"
               value={formValues.item_blurb}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <TextField
               id="description-input"
@@ -210,6 +214,7 @@ function CreateItemForm() {
               type="text"
               value={formValues.item_description}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             {formValues.item_category === "merch" ? (
               <TextField
@@ -219,6 +224,7 @@ function CreateItemForm() {
                 type="number"
                 value={formValues.item_price}
                 onChange={handleInputChange}
+                sx={{ m: 1 }}
               />
             ) : null}
             {formValues.item_category === "merch" ? (
@@ -229,6 +235,7 @@ function CreateItemForm() {
                 type="number"
                 value={formValues.item_quantity}
                 onChange={handleInputChange}
+                sx={{ m: 1 }}
               />
             ) : null}
             <FormControl>
@@ -304,6 +311,7 @@ function CreateItemForm() {
                   value={formValues.swab_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="swab-quantity"
@@ -312,6 +320,7 @@ function CreateItemForm() {
                   type="number"
                   value={formValues.swab_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
@@ -348,6 +357,7 @@ function CreateItemForm() {
                   value={formValues.print_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="print-quantity"
@@ -356,6 +366,7 @@ function CreateItemForm() {
                   type="number"
                   value={formValues.print_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
@@ -392,6 +403,7 @@ function CreateItemForm() {
                   value={formValues.syringe_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="syringe-quantity"
@@ -400,6 +412,7 @@ function CreateItemForm() {
                   type="number"
                   value={formValues.syringe_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
@@ -437,6 +450,7 @@ function CreateItemForm() {
                   value={formValues.sizes_available}
                   renderValue={(selected) => selected.join(", ")}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 >
                   {sizes.map((size) => (
                     <MenuItem key={size} value={size}>
@@ -453,6 +467,15 @@ function CreateItemForm() {
           <Button variant="contained" color="primary" type="submit">
             Submit
           </Button>
+          <Link to="/admin">
+            <Button
+              variant="outlined"
+              color="secondary"
+              id="form-cancel-button"
+            >
+              Cancel
+            </Button>
+          </Link>
         </Grid>
       </form>
     </div>

@@ -1,15 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import CreateItemForm from "../components/CreateItemForm";
+import "../styles/create-item.css";
 
 function CreateItem() {
   return (
     <div className="create-item-container">
-      <h1>CreateItem</h1>
+      <h1>Create New Item</h1>
       <CreateItemForm />
-      <Link to="/admin">
-        <button id="form-cancel-button">Cancel</button>
-      </Link>
     </div>
   );
 }
