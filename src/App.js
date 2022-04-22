@@ -113,13 +113,13 @@ function App(props) {
             element={<Shop cart={cart} setCart={setCart} />}
           />
           <Route path="/terms" element={<Terms />} />
-          <Route path="/login" element={<Login />} />
         </Route>
         <Route path="/" element={<Landing />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin-orders" element={<AdminOrders />} />
         <Route path="/create-item" element={<CreateItem />} />
         <Route path="/edit-item/:id" element={<EditItem />} />
+        <Route path="/login" element={<Login />} />
         {/* <Navbar toggleMenu={toggleMenu} />
 					<NavMenu displayMenu={displayMenu} handleMouseUp={handleMouseUp}/>
 					<Route path="/loading" component={LoadingSpinner} />
