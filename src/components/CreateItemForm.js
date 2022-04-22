@@ -158,7 +158,7 @@ function CreateItemForm() {
       });
   };
   return (
-    <div className="edit-item-container">
+    <div className="create-form-container">
       <form onSubmit={handleSubmit}>
         <Grid>
           <Grid container direction="column">
@@ -172,7 +172,9 @@ function CreateItemForm() {
               sx={{ m: 1 }}
             />
             <FormControl fullWidth>
-              <InputLabel id="category-label">Category</InputLabel>
+              <InputLabel id="category-label" sx={{ ml: 1, mt: 1 }}>
+                Category
+              </InputLabel>
               <Select
                 id="category-select"
                 name="item_category"
@@ -239,12 +241,13 @@ function CreateItemForm() {
               />
             ) : null}
             <FormControl>
-              <FormLabel>Is Available?</FormLabel>
+              <FormLabel sx={{ ml: 2 }}>Is Available?</FormLabel>
               <RadioGroup
                 name="is_available"
                 value={formValues.is_available}
                 onChange={handleBooleanChange}
                 row
+                sx={{ ml: 2 }}
               >
                 <FormControlLabel
                   value="true"
@@ -259,12 +262,13 @@ function CreateItemForm() {
               </RadioGroup>
             </FormControl>
             <FormControl>
-              <FormLabel>Is Active?</FormLabel>
+              <FormLabel sx={{ ml: 2 }}>Is Active?</FormLabel>
               <RadioGroup
                 name="is_active"
                 value={formValues.is_active}
                 onChange={handleBooleanChange}
                 row
+                sx={{ ml: 2 }}
               >
                 <FormControlLabel
                   value="true"
@@ -281,12 +285,13 @@ function CreateItemForm() {
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Swab Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Swab Available?</FormLabel>
                 <RadioGroup
                   name="swab_available"
                   value={formValues.swab_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -327,12 +332,13 @@ function CreateItemForm() {
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Print Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Print Available?</FormLabel>
                 <RadioGroup
                   name="print_available"
                   value={formValues.print_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -373,12 +379,13 @@ function CreateItemForm() {
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Syringe Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Syringe Available?</FormLabel>
                 <RadioGroup
                   name="syringe_available"
                   value={formValues.syringe_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -418,12 +425,13 @@ function CreateItemForm() {
             ) : null}
             {formValues.item_category === "merch" ? (
               <FormControl>
-                <FormLabel>Display Size?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Display Size?</FormLabel>
                 <RadioGroup
                   name="display_size"
                   value={formValues.display_size}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -464,18 +472,26 @@ function CreateItemForm() {
               </FormControl>
             ) : null}
           </Grid>
-          <Button variant="contained" color="primary" type="submit">
-            Submit
-          </Button>
-          <Link to="/admin">
+          <div className="item-form-buttons">
             <Button
-              variant="outlined"
-              color="secondary"
-              id="form-cancel-button"
+              variant="contained"
+              color="primary"
+              type="submit"
+              id="create-form-submit-button"
             >
-              Cancel
+              Submit
             </Button>
-          </Link>
+            <div className="form-spacer" />
+            <Link to="/admin">
+              <Button
+                variant="outlined"
+                color="secondary"
+                id="form-cancel-button"
+              >
+                Cancel
+              </Button>
+            </Link>
+          </div>
         </Grid>
       </form>
     </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -125,8 +126,7 @@ function EditItemForm(props) {
       });
   };
   return (
-    <div className="edit-item-container">
-      <h1>EditItemForm</h1>
+    <div className="edit-form-container">
       <form onSubmit={handleSubmit}>
         <Grid>
           <Grid container direction="column">
@@ -137,9 +137,12 @@ function EditItemForm(props) {
               type="text"
               value={formValues.item_name}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <FormControl fullWidth>
-              <InputLabel id="category-label">Category</InputLabel>
+              <InputLabel id="category-label" sx={{ ml: 1, mt: 1 }}>
+                Category
+              </InputLabel>
               <Select
                 id="category-select"
                 name="item_category"
@@ -147,6 +150,7 @@ function EditItemForm(props) {
                 label="Category"
                 value={formValues.item_category}
                 onChange={handleCategoryChange}
+                sx={{ m: 1 }}
               >
                 <MenuItem value={"cubensis"}>Cubensis</MenuItem>
                 <MenuItem value={"exotic"}>Exotic</MenuItem>
@@ -160,6 +164,7 @@ function EditItemForm(props) {
               type="text"
               value={formValues.image_url}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <TextField
               id="blurb-input"
@@ -168,6 +173,7 @@ function EditItemForm(props) {
               type="text"
               value={formValues.item_blurb}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             <TextField
               id="description-input"
@@ -178,6 +184,7 @@ function EditItemForm(props) {
               type="text"
               value={formValues.item_description}
               onChange={handleInputChange}
+              sx={{ m: 1 }}
             />
             {formValues.item_category === "merch" ? (
               <TextField
@@ -187,6 +194,7 @@ function EditItemForm(props) {
                 type="number"
                 value={formValues.item_price}
                 onChange={handleInputChange}
+                sx={{ m: 1 }}
               />
             ) : null}
             {formValues.item_category === "merch" ? (
@@ -197,15 +205,17 @@ function EditItemForm(props) {
                 type="number"
                 value={formValues.item_quantity}
                 onChange={handleInputChange}
+                sx={{ m: 1 }}
               />
             ) : null}
             <FormControl>
-              <FormLabel>Is Available?</FormLabel>
+              <FormLabel sx={{ ml: 2 }}>Is Available?</FormLabel>
               <RadioGroup
                 name="is_available"
                 value={formValues.is_available}
                 onChange={handleBooleanChange}
                 row
+                sx={{ ml: 2 }}
               >
                 <FormControlLabel
                   value="true"
@@ -220,12 +230,13 @@ function EditItemForm(props) {
               </RadioGroup>
             </FormControl>
             <FormControl>
-              <FormLabel>Is Active?</FormLabel>
+              <FormLabel sx={{ ml: 2 }}>Is Active?</FormLabel>
               <RadioGroup
                 name="is_active"
                 value={formValues.is_active}
                 onChange={handleBooleanChange}
                 row
+                sx={{ ml: 2 }}
               >
                 <FormControlLabel
                   value="true"
@@ -242,12 +253,13 @@ function EditItemForm(props) {
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Swab Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Swab Available?</FormLabel>
                 <RadioGroup
                   name="swab_available"
                   value={formValues.swab_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -272,6 +284,7 @@ function EditItemForm(props) {
                   value={formValues.swab_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="swab-quantity"
@@ -280,18 +293,20 @@ function EditItemForm(props) {
                   type="number"
                   value={formValues.swab_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Print Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Print Available?</FormLabel>
                 <RadioGroup
                   name="print_available"
                   value={formValues.print_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -316,6 +331,7 @@ function EditItemForm(props) {
                   value={formValues.print_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="print-quantity"
@@ -324,18 +340,20 @@ function EditItemForm(props) {
                   type="number"
                   value={formValues.print_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
             {formValues.item_category === "cubensis" ||
             formValues.item_category === "exotic" ? (
               <FormControl>
-                <FormLabel>Syringe Available?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Syringe Available?</FormLabel>
                 <RadioGroup
                   name="syringe_available"
                   value={formValues.syringe_available}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -360,6 +378,7 @@ function EditItemForm(props) {
                   value={formValues.syringe_price}
                   onChange={handleInputChange}
                   onBlur={handleSporePriceChange}
+                  sx={{ m: 1 }}
                 />
                 <TextField
                   id="syringe-quantity"
@@ -368,17 +387,19 @@ function EditItemForm(props) {
                   type="number"
                   value={formValues.syringe_quantity}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 />
               </Grid>
             ) : null}
             {formValues.item_category === "merch" ? (
               <FormControl>
-                <FormLabel>Display Size?</FormLabel>
+                <FormLabel sx={{ ml: 2 }}>Display Size?</FormLabel>
                 <RadioGroup
                   name="display_size"
                   value={formValues.display_size}
                   onChange={handleBooleanChange}
                   row
+                  sx={{ ml: 2 }}
                 >
                   <FormControlLabel
                     value="true"
@@ -405,6 +426,7 @@ function EditItemForm(props) {
                   value={formValues.sizes_available}
                   renderValue={(selected) => selected.join(", ")}
                   onChange={handleInputChange}
+                  sx={{ m: 1 }}
                 >
                   {sizes.map((size) => (
                     <MenuItem key={size} value={size}>
@@ -418,9 +440,26 @@ function EditItemForm(props) {
               </FormControl>
             ) : null}
           </Grid>
-          <Button variant="contained" color="primary" type="submit">
-            Submit
-          </Button>
+          <div className="item-form-buttons">
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              id="edit-form-submit-button"
+            >
+              Submit
+            </Button>
+            <div className="form-spacer" />
+            <Link to="/admin">
+              <Button
+                variant="outlined"
+                color="secondary"
+                id="form-cancel-button"
+              >
+                Cancel
+              </Button>
+            </Link>
+          </div>
         </Grid>
       </form>
     </div>

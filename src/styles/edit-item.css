@@ -1,0 +1,12 @@
+.edit-item-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-form-container {
+  border: 1px solid blue;
+  width: 95vw;
+  padding: 1%;
+}

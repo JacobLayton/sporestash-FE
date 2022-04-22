@@ -1,13 +1,12 @@
 .admin-container {
-  border: 1px solid green;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 3%;
 }
-.admin-buttons {
-  border: 1px solid red;
+.admin-container h1 {
+  margin-bottom: 0;
 }
 
 .admin-cards-container {
@@ -31,7 +30,7 @@
   background-color: black;
   color: var(--purple);
   /* font-size: 10px; */
-  font-size: 2.8vw;
+  font-size: 3vw;
   border-radius: 3px;
   cursor: pointer;
   white-space: nowrap;
@@ -50,7 +49,7 @@
   background-color: black;
   color: var(--orange);
   /* font-size: 10px; */
-  font-size: 2.8vw;
+  font-size: 3vw;
   border-radius: 3px;
   cursor: pointer;
   white-space: nowrap;
@@ -84,6 +83,16 @@
   color: black;
 }
 
+.item-form-buttons {
+  width: 100%;
+  display: flex;
+  padding-left: 10px;
+}
+
+.form-spacer {
+  width: 20px;
+}
+
 @media (min-width: 600px) {
   .create-item-button {
     height: 40px;
@@ -106,18 +115,18 @@
 @media (min-width: 1200px) {
   .create-item-button {
     height: 40px;
-    width: 20vw;
-    font-size: 2vw;
+    width: 190px;
+    font-size: 20px;
   }
   .logout-button {
     /* height: 19px; */
     height: 40px;
-    width: 20vw;
-    font-size: 2vw;
+    width: 190px;
+    font-size: 20px;
   }
   .edit-item-button {
-    height: 4vw;
-    width: 10vw;
-    font-size: 2vw;
+    height: 40px;
+    width: 8vw;
+    font-size: 1vw;
   }
 }

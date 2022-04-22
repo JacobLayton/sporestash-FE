@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditItemForm from "../components/EditItemForm";
+import "../styles/edit-item.css";
 
 function EditItem(props) {
   const [itemData, setItemData] = useState({});
@@ -23,15 +24,12 @@ function EditItem(props) {
   }, [id]);
   return (
     <div className="edit-item-container">
-      <h1>EditItem</h1>
+      <h1>Edit Existing Item</h1>
       {itemData.hasOwnProperty("item_id") ? (
         <EditItemForm itemData={itemData} />
       ) : (
         <h1>Loading...</h1>
       )}
-      <Link to="/admin">
-        <button id="form-cancel-button">Cancel</button>
-      </Link>
     </div>
   );
 }

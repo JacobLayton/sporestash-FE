@@ -20,8 +20,8 @@ const AdminCard = (props) => {
       <img src={props.item.image_url} />
       <div className="card-info">
         <h3>{props.item.item_name}</h3>
-        <span className="item-price">${props.item.item_price}</span>
-        <div className="card-buttons">
+        <span className="admin-item-price">${props.item.item_price}</span>
+        <div className="admin-card-buttons">
           {/* <button onClick={handleDelete}>Delete Item</button> */}
           <Link to={`/edit-item/${props.item.item_id}`}>
             <button className="edit-item-button">Edit Item</button>
