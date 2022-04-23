@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { DataGrid } from "@mui/x-data-grid";
 
 function AdminOrders() {
@@ -182,4 +183,6 @@ function AdminOrders() {
   );
 }
 
-export default AdminOrders;
+export default withAuthenticationRequired(AdminOrders, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+});

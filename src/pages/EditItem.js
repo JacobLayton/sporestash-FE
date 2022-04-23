@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import axios from "axios";
 import EditItemForm from "../components/EditItemForm";
 import "../styles/edit-item.css";
@@ -34,4 +35,6 @@ function EditItem(props) {
   );
 }
 
-export default EditItem;
+export default withAuthenticationRequired(EditItem, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+});

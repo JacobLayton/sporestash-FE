@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import LogoutButton from "../components/LogoutButton";
 import AdminCard from "../components/AdminCard";
 import "../styles/admin.css";
 
 function Admin() {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -21,14 +24,23 @@ function Admin() {
       });
     return () => (mounting = false);
   }, []);
+  console.log("User: ", user);
 
-  return (
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return isAuthenticated ? (
     <div className="admin-container">
-      <h1>Admin</h1>
+      <h1>Admin Section</h1>
+      <h4>Logged in as: {user.name}</h4>
       <div className="admin-buttons">
-        <button className="logout-button">Log Out</button>
+        <LogoutButton />
         <Link to="/create-item">
           <button className="create-item-button">Create New Item</button>
+        </Link>
+        <Link to="/admin-orders">
+          <button className="orders-button">View Orders</button>
         </Link>
       </div>
       <div className="admin-cards-container">
@@ -37,7 +49,11 @@ function Admin() {
         })}
       </div>
     </div>
+  ) : (
+    <div>Administrators Only</div>
   );
 }
 
-export default Admin;
+export default withAuthenticationRequired(Admin, {
+  onRedirecting: () => <div>Redirecting you to the login page...</div>,
+});

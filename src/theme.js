@@ -20,11 +20,11 @@ const theme = createTheme({
     text: {
       primary: "#D6BCE0",
       secondary: "#D6BCE0",
-      disabled: "black",
+      disabled: "#000000",
     },
     background: {
-      paper: "black",
-      default: "black",
+      paper: "#000000",
+      default: "#000000",
     },
     action: {
       active: "#D6BCE0",

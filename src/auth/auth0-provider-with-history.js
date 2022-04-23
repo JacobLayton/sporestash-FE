@@ -1,5 +1,5 @@
 import React from "react";
-// import { useHistory } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 
 const Auth0ProviderWithHistory = ({ children }) => {
@@ -7,18 +7,18 @@ const Auth0ProviderWithHistory = ({ children }) => {
   const clientId = process.env.REACT_APP_AUTH0_CLIENT_ID;
   const audience = process.env.REACT_APP_AUTH0_AUDIENCE;
 
-  //   const history = useHistory();
+  //   let navigate = useNavigate();
 
   //   const onRedirectCallback = (appState) => {
-  //     history.push(appState?.returnTo || window.location.pathname);
+  //     console.log("appstate: ", appState);
+  //     navigate("/shop");
   //   };
-
   return (
     <Auth0Provider
       domain={domain}
       clientId={clientId}
-      redirectUri={window.location.origin}
-      onRedirectCallback={window.location.origin}
+      redirectUri={`${window.location.origin}/admin`}
+      //   onRedirectCallback={onRedirectCallback}
       //   audience={audience}
     >
       {children}
