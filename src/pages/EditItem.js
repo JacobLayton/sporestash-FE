@@ -23,11 +23,23 @@ function EditItem(props) {
       });
     return () => (mounting = false);
   }, [id]);
+
+  const handleDelete = (event) => {
+    event.preventDefault();
+    axios
+      .delete(`${process.env.REACT_APP_SERVER_URL}/items/${itemData.item_id}`)
+      .then((res) => {
+        console.log("RES: ", res);
+      })
+      .catch((err) => {
+        console.log("Error creating item: ", err);
+      });
+  };
   return (
     <div className="edit-item-container">
       <h1>Edit Existing Item</h1>
       {itemData.hasOwnProperty("item_id") ? (
-        <EditItemForm itemData={itemData} />
+        <EditItemForm itemData={itemData} handleDelete={handleDelete} />
       ) : (
         <h1>Loading...</h1>
       )}

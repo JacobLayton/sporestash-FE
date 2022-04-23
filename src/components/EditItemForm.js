@@ -459,6 +459,15 @@ function EditItemForm(props) {
                 Cancel
               </Button>
             </Link>
+            <div className="form-spacer" />
+            <Button
+              variant="outlined"
+              color="error"
+              id="delete-item-button"
+              onClick={props.handleDelete}
+            >
+              Delete
+            </Button>
           </div>
         </Grid>
       </form>

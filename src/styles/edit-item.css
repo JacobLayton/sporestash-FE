@@ -6,7 +6,10 @@
 }
 
 .edit-form-container {
-  border: 1px solid blue;
   width: 95vw;
   padding: 1%;
+}
+
+#form-cancel-button {
+  text-decoration: none !important;
 }

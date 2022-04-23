@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { DataGrid } from "@mui/x-data-grid";
+import { Button } from "@mui/material";
+import "../styles/admin-orders.css";
 
 function AdminOrders() {
   const [orders, setOrders] = useState([]);
@@ -125,7 +127,6 @@ function AdminOrders() {
   return (
     <div className="admin-orders-container">
       <h1>Admin Orders</h1>
-      <button>Log Out</button>
       <div style={{ height: 500, width: "95%" }}>
         <DataGrid
           initialState={{
@@ -145,37 +146,59 @@ function AdminOrders() {
             <h1>Please select a row to see details</h1>
           </div>
         ) : (
-          <div>
-            <p>order_id: {orderDetails.order_id}</p>
-            <p>fulfilled: {String(orderDetails.fulfilled)}</p>
-            <p>ship_date: {orderDetails.ship_date}</p>
-            <p>order_date: {orderDetails.order_date}</p>
-            {orderDetails.order_details.map((item) => {
-              return (
-                <p key={item.item_id}>
-                  <span>ITEM NAME: {item.item_name}</span>
-                  <span>ITEM PRICE: {item.item_price}</span>
-                  <span>ITEM Quantity: {item.quantity}</span>
-                </p>
-              );
-            })}
-            <p>paid: {String(orderDetails.paid)}</p>
-            <p>order_total: {orderDetails.order_total}</p>
-            <p>payment_stripe_id: {orderDetails.payment_stripe_id}</p>
-            <p>customer_id: {orderDetails.customer_id}</p>
-            <p>first_name: {orderDetails.first_name}</p>
-            <p>last_name: {orderDetails.last_name}</p>
-            <p>email: {orderDetails.email}</p>
-            <p>phone: {orderDetails.phone}</p>
-            <p>address_1: {orderDetails.address_1}</p>
-            <p>address_2: {orderDetails.address_2}</p>
-            <p>city: {orderDetails.city}</p>
-            <p>state: {orderDetails.state}</p>
-            <p>zip: {orderDetails.zip}</p>
-            <p>country: {orderDetails.country}</p>
-            <p>customer_stripe_id: {orderDetails.customer_stripe_id}</p>
-            <button onClick={onFulfilledClick}>Fulfilled</button>
-            <button>Delete Order</button>
+          <div className="order-details-wrapper">
+            <div className="all-details">
+              <div className="single-order-info">
+                <h3>Order Details</h3>
+                <p>Order ID: {orderDetails.order_id}</p>
+                <p>Fulfilled: {String(orderDetails.fulfilled)}</p>
+                <p>Ship Date: {orderDetails.ship_date}</p>
+                <p>Order Date: {orderDetails.order_date}</p>
+                <p>Paid: {String(orderDetails.paid)}</p>
+                <p>Order Total: {orderDetails.order_total}</p>
+                <p>Payment Stripe ID: {orderDetails.payment_stripe_id}</p>
+              </div>
+              <div className="order-item-details">
+                <h3>Item Details</h3>
+                {orderDetails.order_details.map((item) => {
+                  return (
+                    <div key={item.item_id} className="order-item">
+                      <p>Item Name: {item.item_name}</p>
+                      <p>Item Price: {item.item_price}</p>
+                      <p>Item Quantity: {item.quantity}</p>
+                    </div>
+                  );
+                })}
+              </div>
+              <div className="customer-info">
+                <h3>Customer Info</h3>
+                <p>Customer ID: {orderDetails.customer_id}</p>
+                <p>First Name: {orderDetails.first_name}</p>
+                <p>Last Name: {orderDetails.last_name}</p>
+                <p>Email: {orderDetails.email}</p>
+                <p>Phone: {orderDetails.phone}</p>
+                <p>Address 1: {orderDetails.address_1}</p>
+                <p>Address 2: {orderDetails.address_2}</p>
+                <p>City: {orderDetails.city}</p>
+                <p>State: {orderDetails.state}</p>
+                <p>Zip: {orderDetails.zip}</p>
+                <p>Country: {orderDetails.country}</p>
+                <p>Customer Stripe ID: {orderDetails.customer_stripe_id}</p>
+              </div>
+            </div>
+            <div className="admin-orders-buttons">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={onFulfilledClick}
+              >
+                Fulfilled
+              </Button>
+              <div className="spacer" />
+              <Button variant="outlined" color="secondary">
+                Delete Order
+              </Button>
+            </div>
           </div>
         )}
       </div>
