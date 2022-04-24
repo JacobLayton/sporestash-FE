@@ -14,10 +14,12 @@ import { InputLabel } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { ListItemText } from "@mui/material";
 import { Button } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
 
 const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
 
 function EditItemForm(props) {
+  const { getAccessTokenSilently } = useAuth0();
   const [formValues, setFormValues] = useState(props.itemData);
 
   const handleCategoryChange = (e) => {
@@ -93,8 +95,9 @@ function EditItemForm(props) {
     setFormValues(updatedFormValues);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const token = await getAccessTokenSilently();
     const formValuesCopy = formValues;
     const formObjKeys = Object.keys(formValuesCopy);
     for (let i = 0; i < formObjKeys.length; i++) {
@@ -116,7 +119,12 @@ function EditItemForm(props) {
     axios
       .put(
         `${process.env.REACT_APP_SERVER_URL}/items/${formValuesCopy.item_id}`,
-        formValuesCopy
+        formValuesCopy,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((res) => {
         console.log("RES: ", res);

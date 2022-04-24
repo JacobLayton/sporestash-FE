@@ -14,6 +14,7 @@ import { InputLabel } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { ListItemText } from "@mui/material";
 import { Button } from "@mui/material";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function getDate() {
   const today = new Date();
@@ -53,6 +54,7 @@ const defaultValues = {
 const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
 
 function CreateItemForm() {
+  const { getAccessTokenSilently } = useAuth0();
   const [formValues, setFormValues] = useState(defaultValues);
 
   const handleCategoryChange = (e) => {
@@ -128,8 +130,9 @@ function CreateItemForm() {
     setFormValues(updatedFormValues);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const token = await getAccessTokenSilently();
     const formValuesCopy = formValues;
     const formObjKeys = Object.keys(formValuesCopy);
     for (let i = 0; i < formObjKeys.length; i++) {
@@ -149,7 +152,11 @@ function CreateItemForm() {
       formValuesCopy.sizes_available = null;
     }
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/items`, formValuesCopy)
+      .post(`${process.env.REACT_APP_SERVER_URL}/items`, formValuesCopy, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log("RES: ", res);
       })
