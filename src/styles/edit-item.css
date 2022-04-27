@@ -13,3 +13,22 @@
 #form-cancel-button {
   text-decoration: none !important;
 }
+
+/* modal */
+.delete-modal-elements {
+}
+
+.delete-modal-buttons {
+  display: flex;
+}
+
+.delete-modal-x {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  width: 30px;
+  height: 30px;
+}
+.delete-modal-x:hover {
+  cursor: pointer;
+}

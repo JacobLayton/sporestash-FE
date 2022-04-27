@@ -9,7 +9,7 @@
 .menu-container .MuiPaper-root {
   border: 1px solid var(--purple);
   border-top: none;
-  /* height: 25vh; */
+  min-height: 25vh;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
   background-image: none;
   padding-top: 18px;
@@ -36,7 +36,7 @@
 @media (min-width: 600px) {
   .menu-container .MuiPaper-root {
     border-left: none;
-    max-height: 20vh;
+    max-height: 30vh;
     border-radius: 0 0 var(--border-radius) 0;
   }
   .menu-container .menu-items {
@@ -55,7 +55,7 @@
 @media (min-width: 1200px) {
   .menu-container .MuiPaper-root {
     border-left: none;
-    max-height: 25vh;
+    max-height: 30vh;
     width: 230px;
     border-radius: 0 0 var(--border-radius) 0;
   }

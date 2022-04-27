@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -19,6 +19,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
 
 function EditItemForm(props) {
+  let navigate = useNavigate();
+  let location = useLocation();
   const { getAccessTokenSilently } = useAuth0();
   const [formValues, setFormValues] = useState(props.itemData);
 
@@ -128,9 +130,11 @@ function EditItemForm(props) {
       )
       .then((res) => {
         console.log("RES: ", res);
+        navigate("/admin" + location.search);
       })
       .catch((err) => {
         console.log("Error creating item: ", err);
+        alert("Error editing item");
       });
   };
   return (
@@ -472,7 +476,7 @@ function EditItemForm(props) {
               variant="outlined"
               color="error"
               id="delete-item-button"
-              onClick={props.handleDelete}
+              onClick={props.handleModalOpen}
             >
               Delete
             </Button>

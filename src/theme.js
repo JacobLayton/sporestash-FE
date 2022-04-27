@@ -34,9 +34,45 @@ const theme = createTheme({
       // selectedOpacity: 0.5,
     },
   },
-  // typography: {
-  //   fontFamily: "NTR",
-  // },
+  typography: {
+    // fontFamily: "NTR",
+    h1: {
+      fontFamily: "NTR",
+    },
+    h2: {
+      fontFamily: "NTR",
+    },
+    h3: {
+      fontFamily: "NTR",
+    },
+    h4: {
+      fontFamily: "NTR",
+    },
+    h5: {
+      fontFamily: "NTR",
+    },
+    button: {
+      fontFamily: "Signika Negative",
+    },
+    caption: {
+      fontFamily: "Signika Negative",
+    },
+    body1: {
+      fontFamily: "Signika Negative",
+    },
+    body2: {
+      fontFamily: "Signika Negative",
+    },
+    overline: {
+      fontFamily: "Signika Negative",
+    },
+    subtitle1: {
+      fontFamily: "Signika Negative",
+    },
+    subtitle2: {
+      fontFamily: "Signika Negative",
+    },
+  },
   shape: {
     borderRadius: "var(--border-radius)",
   },

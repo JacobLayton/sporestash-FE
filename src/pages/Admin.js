@@ -24,7 +24,6 @@ function Admin() {
       });
     return () => (mounting = false);
   }, []);
-  console.log("User: ", user);
 
   if (isLoading) {
     return <div>Loading...</div>;

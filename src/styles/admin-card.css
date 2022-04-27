@@ -1,5 +1,9 @@
 .admin-item-container {
   display: flex;
+  min-width: 20vw;
+}
+.admin-item-container h3 {
+  margin: 0;
 }
 
 .admin-item-container img {
@@ -7,4 +11,8 @@
   width: 164px;
   object-fit: cover;
   object-position: 50% 50%;
+}
+
+.admin-item-container .card-info {
+  padding: 10px 10px;
 }

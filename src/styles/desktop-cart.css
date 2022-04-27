@@ -63,6 +63,7 @@
   cursor: pointer;
   font-size: 1.1rem;
   margin: 0;
+  font-family: "Signika Negative", sans-serif;
 }
 .desktop-cart-checkout .desktop-checkout-button:hover {
   background-color: black;
@@ -80,6 +81,7 @@
   cursor: pointer;
   font-size: 1.1rem;
   margin: 6% 0 6% 0;
+  font-family: "Signika Negative", sans-serif;
 }
 .desktop-cart-checkout .desktop-back-shop-button:hover {
   background-color: var(--purple);

@@ -33,14 +33,15 @@
   }
 } */
 
+@import url("https://fonts.googleapis.com/css2?family=NTR&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+
 :root {
   /* --blue: #113e3e; */
   --purple: #d6bce0;
   --orange: #ed8a1b;
   --border-radius: 15px;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=NTR&display=swap");
 
 .App {
   display: flex;
@@ -59,3 +60,26 @@
     overflow: auto;
   }
 } */
+
+p {
+  font-family: "Signika Negative", sans-serif;
+}
+span {
+  font-family: "Signika Negative", sans-serif;
+}
+
+h1 {
+  font-family: "NTR", sans-serif;
+}
+h2 {
+  font-family: "NTR", sans-serif;
+}
+h3 {
+  font-family: "NTR", sans-serif;
+}
+h4 {
+  font-family: "NTR", sans-serif;
+}
+h5 {
+  font-family: "NTR", sans-serif;
+}

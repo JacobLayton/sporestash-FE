@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { Grid } from "@mui/material";
 import { TextField } from "@mui/material";
@@ -54,6 +54,8 @@ const defaultValues = {
 const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
 
 function CreateItemForm() {
+  let navigate = useNavigate();
+  let location = useLocation();
   const { getAccessTokenSilently } = useAuth0();
   const [formValues, setFormValues] = useState(defaultValues);
 
@@ -159,9 +161,11 @@ function CreateItemForm() {
       })
       .then((res) => {
         console.log("RES: ", res);
+        navigate("/admin" + location.search);
       })
       .catch((err) => {
         console.log("Error creating item: ", err);
+        alert("Error creating item");
       });
   };
   return (
