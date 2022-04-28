@@ -176,6 +176,15 @@
   .desktop-card-left .MuiOutlinedInput-root {
     border-radius: 3px;
   }
+  .desktop-card-inputs-type legend {
+    width: 35px;
+  }
+  .desktop-card-inputs-quantity legend {
+    width: 55px;
+  }
+  .desktop-card-size legend {
+    width: 31px;
+  }
   .desktop-card-right {
     width: 50%;
     display: flex;
@@ -204,5 +213,8 @@
   .desktop-add-cart-btn:hover {
     background-color: black;
     color: var(--orange);
+  }
+  .desktop-card-size-hidden {
+    display: none !important;
   }
 }

@@ -9,9 +9,21 @@ import "../styles/cart-card.css";
 function CartCard(props) {
   function removeFromCart(e) {
     let cartCopy = [...props.cart];
-    cartCopy = cartCopy.filter(
-      (item) => item.id !== `${props.item.item_id}-${props.item.order_type}`
-    );
+    console.log(props.item);
+    if (props.item.item_category !== "merch") {
+      console.log("1");
+      cartCopy = cartCopy.filter(
+        (item) => item.id !== `${props.item.item_id}-${props.item.order_type}`
+      );
+    } else if (props.item.order_size) {
+      console.log("2");
+      cartCopy = cartCopy.filter(
+        (item) => item.id !== `${props.item.item_id}-${props.item.order_size}`
+      );
+    } else {
+      console.log("3");
+      cartCopy = cartCopy.filter((item) => item.id !== String(props.item.id));
+    }
 
     props.setCart(cartCopy);
 

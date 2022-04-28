@@ -71,6 +71,10 @@
   margin-bottom: 3%;
 }
 
+.selector-card-size-hidden {
+  display: none !important;
+}
+
 @media (min-width: 600px) {
   .MuiDialog-paper {
     width: 58vw;

@@ -52,24 +52,57 @@ function SelectorCard(props) {
           onClick={handleClose}
         />
         <h3>{props.item.item_name}</h3>
-        <h4>Choose Type and Quantity</h4>
-        <FormControl className="selector-card-inputs">
-          <InputLabel id="type-label">Type</InputLabel>
-          <Select
-            id="order-type"
-            name="order_type"
-            labelId="type-label"
-            label="Type"
-            value={props.formValues.order_type}
-            onChange={handleSelectChange}
+        {props.item.item_category !== "merch" ? (
+          <h4>Choose Type and Quantity</h4>
+        ) : props.item.display_size ? (
+          <h4>Choose Size and Quantity</h4>
+        ) : (
+          <h4>Choose Quantity</h4>
+        )}
+        {props.item.item_category !== "merch" ? (
+          <FormControl className="selector-card-inputs">
+            <InputLabel id="type-label">Type</InputLabel>
+            <Select
+              id="order-type"
+              name="order_type"
+              labelId="type-label"
+              label="Type"
+              value={props.formValues.order_type}
+              onChange={handleSelectChange}
+            >
+              <MenuItem value={"swab"}>Swab</MenuItem>
+              <MenuItem value={"print"}>Print</MenuItem>
+              <MenuItem value={"syring"} disabled>
+                Syringe
+              </MenuItem>
+            </Select>
+          </FormControl>
+        ) : (
+          <FormControl
+            className={
+              props.item.display_size
+                ? "selector-card-size"
+                : "selector-card-size-hidden"
+            }
           >
-            <MenuItem value={"swab"}>Swab</MenuItem>
-            <MenuItem value={"print"}>Print</MenuItem>
-            <MenuItem value={"syring"} disabled>
-              Syringe
-            </MenuItem>
-          </Select>
-        </FormControl>
+            <InputLabel id="size-label">Size</InputLabel>
+            <Select
+              id="order-size"
+              name="order_size"
+              labelId="size-label"
+              label="Size"
+              value={props.formValues.order_size}
+              onChange={handleSelectChange}
+            >
+              <MenuItem value={"XS"}>XS</MenuItem>
+              <MenuItem value={"SM"}>SM</MenuItem>
+              <MenuItem value={"MD"}>MD</MenuItem>
+              <MenuItem value={"LG"}>LG</MenuItem>
+              <MenuItem value={"XL"}>XL</MenuItem>
+              <MenuItem value={"XXL"}>XXL</MenuItem>
+            </Select>
+          </FormControl>
+        )}
         <div className="spacer" />
         <FormControl className="selector-card-inputs">
           <InputLabel id="quantity-label">Quantity</InputLabel>

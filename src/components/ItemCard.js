@@ -10,6 +10,7 @@ import "../styles/item-card.css";
 const defaultValues = {
   order_type: "",
   order_quantity: "",
+  order_size: "",
 };
 
 const ItemCard = (props) => {
@@ -48,7 +49,17 @@ const ItemCard = (props) => {
       item_price: props.item.item_price,
       image_url: props.item.image_url,
       cart_quantity: formValues.order_quantity,
+      order_size: formValues.order_size,
+      item_category: props.item.item_category,
     };
+    if (props.item.item_category === "merch") {
+      if (props.item.display_size) {
+        console.log(`${props.item.item_id}-${formValues.order_size}`);
+        itemObj.id = `${props.item.item_id}-${formValues.order_size}`;
+      } else {
+        itemObj.id = String(props.item.item_id);
+      }
+    }
     let cartCopy = [...props.cart];
 
     //assuming we have an ID field in our item
@@ -97,34 +108,62 @@ const ItemCard = (props) => {
         </div>
         <div className="desktop-card-contents">
           <div className="desktop-card-left">
-            <FormControl className="desktop-card-inputs" size="small">
-              <InputLabel id="type-label">Type</InputLabel>
-              <Select
-                id="desktop-order-type"
-                name="order_type"
-                labelId="type-label"
-                label="Type"
-                value={formValues.order_type}
-                onChange={handleSelectChange}
+            {props.item.item_category !== "merch" ? (
+              <FormControl className="desktop-card-inputs-type" size="small">
+                <InputLabel id="type-label">Type</InputLabel>
+                <Select
+                  id="desktop-order-type"
+                  name="order_type"
+                  labelId="type-label"
+                  label="Type"
+                  value={formValues.order_type}
+                  onChange={handleSelectChange}
+                >
+                  <MenuItem value={"swab"}>
+                    Swab (${props.item.swab_price})
+                  </MenuItem>
+                  <MenuItem value={"print"}>
+                    Print (${props.item.print_price})
+                  </MenuItem>
+                  <MenuItem value={"syring"}>
+                    Syringe (${props.item.syringe_price})
+                  </MenuItem>
+                </Select>
+              </FormControl>
+            ) : (
+              <FormControl
+                className={
+                  props.item.display_size
+                    ? "desktop-card-size"
+                    : "desktop-card-size-hidden"
+                }
+                size="small"
               >
-                <MenuItem value={"swab"}>
-                  Swab (${props.item.swab_price})
-                </MenuItem>
-                <MenuItem value={"print"}>
-                  Print (${props.item.print_price})
-                </MenuItem>
-                <MenuItem value={"syring"}>
-                  Syringe (${props.item.syringe_price})
-                </MenuItem>
-              </Select>
-            </FormControl>
+                <InputLabel id="size-label">Size</InputLabel>
+                <Select
+                  id="desktop-order-size"
+                  name="order_size"
+                  labelId="size-label"
+                  label="Size"
+                  value={formValues.order_size}
+                  onChange={handleSelectChange}
+                >
+                  <MenuItem value={"XS"}>XS</MenuItem>
+                  <MenuItem value={"SM"}>SM</MenuItem>
+                  <MenuItem value={"MD"}>MD</MenuItem>
+                  <MenuItem value={"LG"}>LG</MenuItem>
+                  <MenuItem value={"XL"}>XL</MenuItem>
+                  <MenuItem value={"XXL"}>XXL</MenuItem>
+                </Select>
+              </FormControl>
+            )}
             <div className="spacer" />
-            <FormControl className="desktop-card-inputs" size="small">
+            <FormControl className="desktop-card-inputs-quantity" size="small">
               <InputLabel id="desktop-quantity-label">Quantity</InputLabel>
               <Select
                 id="order-quantity"
                 name="order_quantity"
-                labelId="quantity-label"
+                labelId="desktop-quantity-label"
                 label="Quantity"
                 value={formValues.order_quantity}
                 onChange={handleSelectChange}
