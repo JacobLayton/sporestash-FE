@@ -27,9 +27,9 @@ function Menu(props) {
       />
       <div className="menu-items">
         <MenuItem>FAQs</MenuItem>
-        <MenuItem>Contact Us</MenuItem>
         <MenuItem>Terms and Conditions</MenuItem>
         <MenuItem>Privacy Statement</MenuItem>
+        <MenuItem>Contact Us</MenuItem>
       </div>
     </Drawer>
   );

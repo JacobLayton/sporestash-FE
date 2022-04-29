@@ -4,7 +4,7 @@ import { useMediaQuery } from "@mui/material";
 import PrivateRoute from "./PrivateRoute";
 import Landing from "./pages/Landing";
 import Shop from "./pages/Shop";
-import Terms from "./pages/Terms";
+import Info from "./pages/Info";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
@@ -112,7 +112,7 @@ function App(props) {
               path="/shop"
               element={<Shop cart={cart} setCart={setCart} />}
             />
-            <Route path="/terms" element={<Terms />} />
+            <Route path="/info" element={<Info />} />
           </Route>
           <Route path="/" element={<Landing />} />
           <Route path="/admin" element={<Admin />} />
