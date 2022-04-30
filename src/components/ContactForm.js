@@ -101,6 +101,7 @@ function ContactForm() {
   };
   return (
     <div className="contact-form-container">
+      <h1>Contact Us</h1>
       <form onSubmit={handleSubmit}>
         <Grid>
           <Grid container direction="column">
@@ -166,6 +167,7 @@ function ContactForm() {
               color="primary"
               type="submit"
               id="contact-form-submit-button"
+              sx={{ ml: 1.2 }}
             >
               Submit
             </Button>
