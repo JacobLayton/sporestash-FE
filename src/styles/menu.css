@@ -5,6 +5,10 @@
 .menu-container.hiding {
   display: none;
 } */
+.menu-container .menu-items a {
+  text-decoration: none;
+  color: var(--purple);
+}
 
 .menu-container .MuiPaper-root {
   border: 1px solid var(--purple);
@@ -55,12 +59,12 @@
 @media (min-width: 1200px) {
   .menu-container .MuiPaper-root {
     border-left: none;
-    max-height: 30vh;
+    max-height: 35vh;
     width: 230px;
     border-radius: 0 0 var(--border-radius) 0;
   }
   .menu-container .menu-items {
-    margin-top: 25%;
+    margin-top: 20%;
   }
   .menu-container .menu-x {
     height: 25px;
@@ -69,5 +73,8 @@
     margin-top: 1%;
     position: absolute;
     cursor: pointer;
+  }
+  .menu-container li {
+    font-size: 18px;
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import { Badge } from "@mui/material";
 import "../styles/navbar.css";
 
@@ -12,7 +13,9 @@ function Navbar(props) {
         className="nav-hamburger"
         onClick={props.toggleMenu}
       />
-      <h1>Spore Stash</h1>
+      <Link to="/shop">
+        <h1>Spore Stash</h1>
+      </Link>
       <div className="cart-components">
         <Badge badgeContent={props.cartData.length}>
           <FontAwesomeIcon

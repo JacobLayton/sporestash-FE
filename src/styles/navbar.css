@@ -6,7 +6,9 @@
   padding: 2vw 3vw;
   width: 100%;
 }
-
+.navbar-container a {
+  text-decoration: none;
+}
 .navbar-container h1 {
   font-family: NationalForestRegular;
   color: var(--purple);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Drawer } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -26,10 +27,21 @@ function Menu(props) {
         onClick={props.toggleMenu}
       />
       <div className="menu-items">
-        <MenuItem>FAQs</MenuItem>
-        <MenuItem>Terms and Conditions</MenuItem>
-        <MenuItem>Privacy Statement</MenuItem>
-        <MenuItem>Contact Us</MenuItem>
+        <Link to="/shop" onClick={props.toggleMenu}>
+          <MenuItem>Home</MenuItem>
+        </Link>
+        <Link to="/info" onClick={props.toggleMenu}>
+          <MenuItem>FAQs</MenuItem>
+        </Link>
+        <Link to="/info" onClick={props.toggleMenu}>
+          <MenuItem>Terms & Conditions</MenuItem>
+        </Link>
+        <Link to="/info" onClick={props.toggleMenu}>
+          <MenuItem>Privacy Statement</MenuItem>
+        </Link>
+        <Link to="/info" onClick={props.toggleMenu}>
+          <MenuItem>Contact Us</MenuItem>
+        </Link>
       </div>
     </Drawer>
   );
