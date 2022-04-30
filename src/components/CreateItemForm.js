@@ -493,7 +493,7 @@ function CreateItemForm() {
               Submit
             </Button>
             <div className="form-spacer" />
-            <Link to="/admin">
+            <Link to="/admin" style={{ textDecoration: "none" }}>
               <Button
                 variant="outlined"
                 color="secondary"
