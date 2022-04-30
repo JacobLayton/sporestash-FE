@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import "../styles/admin-orders.css";
 
@@ -53,6 +53,7 @@ function AdminOrders() {
     const customer = customers[row.customer_id];
     const orderDetailsObj = {
       order_id: row.order_id,
+      order_number: row.order_number,
       fulfilled: row.fulfilled,
       ship_date: row.ship_date,
       order_date: row.order_date,
@@ -108,13 +109,13 @@ function AdminOrders() {
   }
 
   const columns = [
-    { field: "order_id", headerName: "ID", width: 50 },
-    { field: "fulfilled", headerName: "Fulfilled", width: 100 },
+    { field: "order_id", headerName: "ID", width: 60 },
+    { field: "fulfilled", headerName: "Fulfilled", width: 90 },
     { field: "order_date", headerName: "Order Date", width: 150 },
     { field: "order_number", headerName: "Order Number", width: 150 },
     // { field: "order_details", headerName: "Order Details", width: 150 },
     { field: "order_total", headerName: "Order Total ($)", width: 150 },
-    { field: "paid", headerName: "Paid", width: 150 },
+    { field: "paid", headerName: "Paid", width: 80 },
     { field: "payment_id", headerName: "Payment ID", width: 150 },
     { field: "payment_date", headerName: "Payment Date", width: 150 },
     { field: "ship_date", headerName: "Ship Date", width: 150 },
@@ -138,6 +139,7 @@ function AdminOrders() {
           columns={columns}
           disableMultipleSelection={true}
           onRowClick={onRowSelected}
+          components={{ Toolbar: GridToolbar }}
         />
       </div>
       <div className="order-details-container">
@@ -151,6 +153,7 @@ function AdminOrders() {
               <div className="single-order-info">
                 <h3>Order Details</h3>
                 <p>Order ID: {orderDetails.order_id}</p>
+                <p>Order Number: {orderDetails.order_number}</p>
                 <p>Fulfilled: {String(orderDetails.fulfilled)}</p>
                 <p>Ship Date: {orderDetails.ship_date}</p>
                 <p>Order Date: {orderDetails.order_date}</p>
