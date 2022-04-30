@@ -4,6 +4,10 @@
   flex-direction: column;
   align-items: center;
   min-height: 80vh;
+  width: 100%;
+}
+.shop-container .coming-soon {
+  text-align: center;
 }
 
 .shop-container .main-logo {
@@ -56,6 +60,7 @@
   color: black;
 }
 .shop-cards {
+  min-width: 92%;
   border: 1px solid var(--purple);
   border-top: none;
   border-radius: 0 0 var(--border-radius) var(--border-radius);
@@ -76,6 +81,7 @@
   }
   .shop-cards {
     margin: 0 15%;
+    min-width: 70%;
   }
 }
 @media (min-width: 1200px) {
@@ -124,5 +130,6 @@
     /* border: 1px solid blue; */
     border: none;
     padding: 0;
+    min-width: 0;
   }
 }

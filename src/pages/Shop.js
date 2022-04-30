@@ -95,16 +95,20 @@ function Shop(props) {
         </button>
       </div>
       <div className="shop-cards">
-        {displayedItems.map((item) => {
-          return (
-            <ItemCard
-              item={item}
-              key={item.item_id}
-              cart={props.cart}
-              setCart={props.setCart}
-            />
-          );
-        })}
+        {displayedItems.length > 0 ? (
+          displayedItems.map((item) => {
+            return (
+              <ItemCard
+                item={item}
+                key={item.item_id}
+                cart={props.cart}
+                setCart={props.setCart}
+              />
+            );
+          })
+        ) : (
+          <h3 className="coming-soon">Coming Soon!</h3>
+        )}
       </div>
     </div>
   );
