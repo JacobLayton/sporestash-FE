@@ -70,10 +70,35 @@ function SelectorCard(props) {
               value={props.formValues.order_type}
               onChange={handleSelectChange}
             >
-              <MenuItem value={"swab"}>Swab</MenuItem>
-              <MenuItem value={"print"}>Print</MenuItem>
-              <MenuItem value={"syring"} disabled>
+              <MenuItem value={"swab"} disabled={!props.item.swab_available}>
+                Swab
+              </MenuItem>
+              <MenuItem value={"print"} disabled={!props.item.print_available}>
+                Print
+                {props.item.print_available &&
+                Number(props.item.print_price) -
+                  Number(props.item.item_price) !==
+                  0
+                  ? ` (+ $${
+                      Number(props.item.print_price) -
+                      Number(props.item.item_price)
+                    })`
+                  : ""}
+              </MenuItem>
+              <MenuItem
+                value={"syring"}
+                disabled={!props.item.syringe_available}
+              >
                 Syringe
+                {props.item.syringe_available &&
+                Number(props.item.syringe_price) -
+                  Number(props.item.item_price) !==
+                  0
+                  ? ` +$${
+                      Number(props.item.syringe_price) -
+                      Number(props.item.item_price)
+                    }`
+                  : ""}
               </MenuItem>
             </Select>
           </FormControl>

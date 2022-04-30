@@ -119,23 +119,36 @@ const ItemCard = (props) => {
                   value={formValues.order_type}
                   onChange={handleSelectChange}
                 >
-                  <MenuItem value={"swab"}>Swab</MenuItem>
-                  <MenuItem value={"print"}>
+                  <MenuItem
+                    value={"swab"}
+                    disabled={!props.item.swab_available}
+                  >
+                    Swab
+                  </MenuItem>
+                  <MenuItem
+                    value={"print"}
+                    disabled={!props.item.print_available}
+                  >
                     Print
-                    {Number(props.item.print_price) -
+                    {props.item.print_available &&
+                    Number(props.item.print_price) -
                       Number(props.item.item_price) !==
-                    0
+                      0
                       ? ` (+ $${
                           Number(props.item.print_price) -
                           Number(props.item.item_price)
                         })`
                       : ""}
                   </MenuItem>
-                  <MenuItem value={"syring"}>
+                  <MenuItem
+                    value={"syring"}
+                    disabled={!props.item.syringe_available}
+                  >
                     Syringe
-                    {Number(props.item.syringe_price) -
+                    {props.item.syringe_available &&
+                    Number(props.item.syringe_price) -
                       Number(props.item.item_price) !==
-                    0
+                      0
                       ? ` +$${
                           Number(props.item.syringe_price) -
                           Number(props.item.item_price)
