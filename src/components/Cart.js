@@ -1,4 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
+import axios from "axios";
 import { Drawer } from "@mui/material";
 import { Dialog } from "@mui/material";
 import { Slide } from "@mui/material";
@@ -16,13 +17,27 @@ function Cart(props) {
     return (orderSubtotal +=
       Number(cartItem.item_price) * Number(cartItem.cart_quantity));
   });
+  async function onCheckoutClick(e) {
+    const cartData = JSON.stringify(props.cart);
+    axios
+      .post(`${process.env.REACT_APP_PAYMENT_URL}`, cartData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log("Res: ", res);
+        if (res.status === 200) return res.data;
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((err) => {
+        console.error(err.error);
+      });
+  }
   return (
-    // <Drawer
-    //   anchor="right"
-    //   open={props.displayCart}
-    //   onClose={props.toggleCart}
-    //   className="cart-container"
-    // >
     <Dialog
       onClose={props.toggleCart}
       open={props.displayCart}
@@ -63,7 +78,9 @@ function Cart(props) {
           </div>
           <div className="cart-checkout">
             <h2>Order Subtotal: ${orderSubtotal}</h2>
-            <button className="checkout-button">Checkout</button>
+            <button className="checkout-button" onClick={onCheckoutClick}>
+              Checkout
+            </button>
             <button className="back-shop-button" onClick={props.toggleCart}>
               Back To Shop
             </button>
@@ -73,7 +90,6 @@ function Cart(props) {
         <h1>Cart Is Empty</h1>
       )}
     </Dialog>
-    // </Drawer>
   );
 }
 

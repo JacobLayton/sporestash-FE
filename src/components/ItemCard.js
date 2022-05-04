@@ -141,7 +141,7 @@ const ItemCard = (props) => {
                       : ""}
                   </MenuItem>
                   <MenuItem
-                    value={"syring"}
+                    value={"syringe"}
                     disabled={!props.item.syringe_available}
                   >
                     Syringe
