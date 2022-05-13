@@ -10,6 +10,7 @@
 
 .single-order-info {
   border: 1px solid var(--purple);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
   padding: 3%;
   margin-bottom: 2%;
 }
@@ -30,6 +31,7 @@
 
 .customer-info {
   border: 1px solid var(--purple);
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
   padding: 3%;
   margin-bottom: 2%;
 }
@@ -39,17 +41,35 @@
   justify-content: space-between;
 }
 
+.admin-orders-header h2 {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .admin-orders-container {
     width: 100%;
   }
+  .admin-orders-header h2 {
+    display: block;
+    color: var(--purple);
+    position: absolute;
+    left: 3vw;
+    top: 0.5vh;
+  }
 }
 
 @media (min-width: 1200px) {
+  .order-details-wrapper {
+    width: 98vw;
+  }
   .all-details {
     display: flex;
+    justify-content: center;
   }
   .order-item {
     border-bottom: 1px solid var(--purple);
+  }
+  .admin-orders-buttons {
+    justify-content: space-around;
   }
 }

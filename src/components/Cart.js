@@ -17,7 +17,8 @@ function Cart(props) {
     return (orderSubtotal +=
       Number(cartItem.item_price) * Number(cartItem.cart_quantity));
   });
-  async function onCheckoutClick(e) {
+  function onCheckoutClick(e) {
+    console.log("checkout");
     const cartData = JSON.stringify(props.cart);
     axios
       .post(`${process.env.REACT_APP_PAYMENT_URL}`, cartData, {

@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import Menu from "./components/Menu";
 import Cart from "./components/Cart";
 import DesktopCart from "./components/DesktopCart";
+import PaymentSuccess from "./pages/PaymentSuccess";
 import Footer from "./components/Footer";
 import Admin from "./pages/Admin";
 import AdminOrders from "./pages/AdminOrders";
@@ -113,6 +114,10 @@ function App(props) {
               element={<Shop cart={cart} setCart={setCart} />}
             />
             <Route path="/info" element={<Info />} />
+            <Route
+              path="/payment-success"
+              element={<PaymentSuccess setCart={setCart} cart={cart} />}
+            />
           </Route>
           <Route path="/" element={<Landing />} />
           <Route path="/admin" element={<Admin />} />

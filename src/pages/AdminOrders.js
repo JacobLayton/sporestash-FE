@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
@@ -37,7 +38,7 @@ function AdminOrders() {
         if (mounting) {
           const customerObj = {};
           res.data.map((customer) => {
-            return (customerObj[customer.customer_id] = customer);
+            return (customerObj[customer.stripe_id] = customer);
           });
           setCustomers(customerObj);
         }
@@ -50,7 +51,7 @@ function AdminOrders() {
 
   function onRowSelected(params) {
     const row = params.row;
-    const customer = customers[row.customer_id];
+    const customer = customers[row.stripe_cust_id];
     const orderDetailsObj = {
       order_id: row.order_id,
       order_number: row.order_number,
@@ -58,10 +59,11 @@ function AdminOrders() {
       ship_date: row.ship_date,
       order_date: row.order_date,
       paid: row.paid,
-      order_details: Array(row.order_details),
+      order_details: row.order_details,
       order_total: row.order_total,
       payment_stripe_id: row.stripe_id,
       customer_id: customer.customer_id,
+      stripe_cust_id: row.stripe_cust_id,
       first_name: customer.first_name,
       last_name: customer.last_name,
       email: customer.email,
@@ -113,13 +115,12 @@ function AdminOrders() {
     { field: "fulfilled", headerName: "Fulfilled", width: 90 },
     { field: "order_date", headerName: "Order Date", width: 150 },
     { field: "order_number", headerName: "Order Number", width: 150 },
-    // { field: "order_details", headerName: "Order Details", width: 150 },
     { field: "order_total", headerName: "Order Total ($)", width: 150 },
     { field: "paid", headerName: "Paid", width: 80 },
     { field: "payment_id", headerName: "Payment ID", width: 150 },
     { field: "payment_date", headerName: "Payment Date", width: 150 },
     { field: "ship_date", headerName: "Ship Date", width: 150 },
-    { field: "customer_id", headerName: "Customer ID", width: 150 },
+    { field: "stripe_cust_id", headerName: "Customer ID", width: 150 },
     { field: "error_msg", headerName: "Error Message", width: 150 },
     { field: "canceled", headerName: "Canceled", width: 150 },
     { field: "stripe_id", headerName: "Strip ID", width: 150 },
@@ -127,7 +128,12 @@ function AdminOrders() {
 
   return (
     <div className="admin-orders-container">
-      <h1>Admin Orders</h1>
+      <div className="admin-orders-header">
+        <Link to="/admin">
+          <h2>{"< Back To Admin"}</h2>
+        </Link>
+        <h1>Admin Orders</h1>
+      </div>
       <div style={{ height: 500, width: "95%" }}>
         <DataGrid
           initialState={{
@@ -164,18 +170,25 @@ function AdminOrders() {
               <div className="order-item-details">
                 <h3>Item Details</h3>
                 {orderDetails.order_details.map((item) => {
+                  const itemType = item.item_type ? (
+                    <p>Item Type: {item.item_type}</p>
+                  ) : null;
+                  const itemSize = item.item_size ? (
+                    <p>Item Size: {item.item_size}</p>
+                  ) : null;
                   return (
-                    <div key={item.item_id} className="order-item">
+                    <div key={item.id} className="order-item">
                       <p>Item Name: {item.item_name}</p>
+                      {itemType}
+                      {itemSize}
+                      <p>Item Quantity: {item.item_quantity}</p>
                       <p>Item Price: {item.item_price}</p>
-                      <p>Item Quantity: {item.quantity}</p>
                     </div>
                   );
                 })}
               </div>
               <div className="customer-info">
                 <h3>Customer Info</h3>
-                <p>Customer ID: {orderDetails.customer_id}</p>
                 <p>First Name: {orderDetails.first_name}</p>
                 <p>Last Name: {orderDetails.last_name}</p>
                 <p>Email: {orderDetails.email}</p>
@@ -186,7 +199,7 @@ function AdminOrders() {
                 <p>State: {orderDetails.state}</p>
                 <p>Zip: {orderDetails.zip}</p>
                 <p>Country: {orderDetails.country}</p>
-                <p>Customer Stripe ID: {orderDetails.customer_stripe_id}</p>
+                <p>Customer Stripe ID: {orderDetails.stripe_cust_id}</p>
               </div>
             </div>
             <div className="admin-orders-buttons">

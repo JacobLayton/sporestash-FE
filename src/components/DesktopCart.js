@@ -1,4 +1,5 @@
 import React, { useState, useEffect, forwardRef } from "react";
+import axios from "axios";
 import { Drawer } from "@mui/material";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CartCard from "./CartCard";
@@ -10,6 +11,27 @@ function DesktopCart(props) {
     return (orderSubtotal +=
       Number(cartItem.item_price) * Number(cartItem.cart_quantity));
   });
+  function onDesktopCheckoutClick(e) {
+    console.log("checkout");
+    const cartData = JSON.stringify(props.cart);
+    axios
+      .post(`${process.env.REACT_APP_PAYMENT_URL}`, cartData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((res) => {
+        console.log("Res: ", res);
+        if (res.status === 200) return res.data;
+        return res.json().then((json) => Promise.reject(json));
+      })
+      .then(({ url }) => {
+        window.location = url;
+      })
+      .catch((err) => {
+        console.error(err.error);
+      });
+  }
   return (
     <Drawer
       anchor={"right"}
@@ -40,7 +62,12 @@ function DesktopCart(props) {
           </div>
           <div className="desktop-cart-checkout">
             <h2>Order Subtotal: ${orderSubtotal}</h2>
-            <button className="desktop-checkout-button">Checkout</button>
+            <button
+              className="desktop-checkout-button"
+              onClick={onDesktopCheckoutClick}
+            >
+              Checkout
+            </button>
             <button
               className="desktop-back-shop-button"
               onClick={props.toggleCart}

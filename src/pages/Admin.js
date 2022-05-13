@@ -16,7 +16,16 @@ function Admin() {
       .get(`${process.env.REACT_APP_SERVER_URL}/items`)
       .then((res) => {
         if (mounting) {
-          setItems(res.data);
+          const sortedItems = res.data.sort((a, b) =>
+            a.item_category > b.item_category
+              ? 1
+              : a.item_category === b.item_category
+              ? a.created_date > b.created_date
+                ? 1
+                : -1
+              : -1
+          );
+          setItems(sortedItems);
         }
       })
       .catch((err) => {
