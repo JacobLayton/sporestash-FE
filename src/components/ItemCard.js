@@ -41,6 +41,15 @@ const ItemCard = (props) => {
       ...formValues,
       [name]: value,
     };
+    if (name === "order_quantity" && quantityError) {
+      setQuantityError(false);
+    }
+    if (name === "order_type" && typeError) {
+      setTypeError(false);
+    }
+    if (name === "order_size" && sizeError) {
+      setSizeError(false);
+    }
     setFormValues(updatedFormValues);
   };
   function formValidation(itemData, formData) {
@@ -144,6 +153,7 @@ const ItemCard = (props) => {
                   name="order_type"
                   labelId="type-label"
                   label="Type"
+                  error={typeError}
                   value={formValues.order_type}
                   onChange={handleSelectChange}
                 >
@@ -200,6 +210,7 @@ const ItemCard = (props) => {
                   name="order_size"
                   labelId="size-label"
                   label="Size"
+                  error={sizeError}
                   value={formValues.order_size}
                   onChange={handleSelectChange}
                 >
@@ -220,6 +231,7 @@ const ItemCard = (props) => {
                 name="order_quantity"
                 labelId="desktop-quantity-label"
                 label="Quantity"
+                error={quantityError}
                 value={formValues.order_quantity}
                 onChange={handleSelectChange}
               >
