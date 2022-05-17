@@ -41,7 +41,7 @@ function App(props) {
   const [displayDesktopCart, setDisplayDesktopCart] = useState(false);
   const [cart, setCart] = useState([]);
   const mobileDown = useMediaQuery("(max-width:600px)");
-  let localCart = localStorage.getItem("cart");
+  let localCart = localStorage.getItem("sscart");
 
   useEffect(() => {
     //turn it into js

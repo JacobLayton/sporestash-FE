@@ -6,6 +6,7 @@ function PaymentSuccess(props) {
   useEffect(() => {
     if (props.cart && props.cart.length > 0) {
       props.setCart([]);
+      localStorage.removeItem("sscart");
     }
   });
   return (

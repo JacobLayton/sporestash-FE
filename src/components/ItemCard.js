@@ -17,6 +17,9 @@ const ItemCard = (props) => {
   const [moreInfoOpen, setMoreInfoOpen] = useState(false);
   const [selectorOpen, setSelectorOpen] = useState(false);
   const [formValues, setFormValues] = useState(defaultValues);
+  const [quantityError, setQuantityError] = useState(false);
+  const [typeError, setTypeError] = useState(false);
+  const [sizeError, setSizeError] = useState(false);
   function handleClickOpen() {
     setMoreInfoOpen(true);
   }
@@ -40,54 +43,79 @@ const ItemCard = (props) => {
     };
     setFormValues(updatedFormValues);
   };
+  function formValidation(itemData, formData) {
+    let allFieldsComplete = true;
+    if (formData.order_quantity === "") {
+      setQuantityError(true);
+      allFieldsComplete = false;
+    }
+    if (itemData.item_category !== "merch" && formData.order_type === "") {
+      setTypeError(true);
+      allFieldsComplete = false;
+    }
+    if (
+      itemData.item_category === "merch" &&
+      itemData.display_size &&
+      formData.order_size === ""
+    ) {
+      setSizeError(true);
+      allFieldsComplete = false;
+    }
+    return allFieldsComplete;
+  }
   function handleAddToCart(e) {
-    const itemObj = {
-      item_id: props.item.item_id,
-      order_type: formValues.order_type,
-      id: `${props.item.item_id}-${formValues.order_type}`,
-      item_name: props.item.item_name,
-      item_price: props.item.item_price,
-      image_url: props.item.image_url,
-      cart_quantity: formValues.order_quantity,
-      order_size: formValues.order_size,
-      item_category: props.item.item_category,
-    };
-    if (props.item.item_category === "merch") {
-      if (props.item.display_size) {
-        console.log(`${props.item.item_id}-${formValues.order_size}`);
-        itemObj.id = `${props.item.item_id}-${formValues.order_size}`;
-      } else {
-        itemObj.id = String(props.item.item_id);
+    const allFieldsComplete = formValidation(props.item, formValues);
+    if (allFieldsComplete) {
+      const itemObj = {
+        item_id: props.item.item_id,
+        order_type: formValues.order_type,
+        id: `${props.item.item_id}-${formValues.order_type}`,
+        item_name: props.item.item_name,
+        item_price: props.item.item_price,
+        image_url: props.item.image_url,
+        cart_quantity: formValues.order_quantity,
+        order_size: formValues.order_size,
+        item_category: props.item.item_category,
+      };
+      if (props.item.item_category === "merch") {
+        if (props.item.display_size) {
+          console.log(`${props.item.item_id}-${formValues.order_size}`);
+          itemObj.id = `${props.item.item_id}-${formValues.order_size}`;
+        } else {
+          itemObj.id = String(props.item.item_id);
+        }
       }
+      let cartCopy = [...props.cart];
+
+      //assuming we have an ID field in our item
+      let id = props.item.item_id;
+
+      //look for item in cart array
+      let existingItem = cartCopy.find(
+        (cartItem) =>
+          cartItem.item_id === id &&
+          cartItem.order_type === formValues.order_type
+      );
+
+      //if item already exists
+      if (existingItem) {
+        existingItem.cart_quantity =
+          Number(existingItem.cart_quantity) +
+          Number(formValues.order_quantity); //update this to be number selected
+      } else {
+        //if item doesn't exist, simply add it
+        cartCopy.push(itemObj);
+      }
+
+      //update app state
+      props.setCart(cartCopy);
+
+      //make cart a string and store in local space
+      let stringCart = JSON.stringify(cartCopy);
+      localStorage.setItem("sscart", stringCart);
+      handleSelectorClose();
+      setFormValues(defaultValues);
     }
-    let cartCopy = [...props.cart];
-
-    //assuming we have an ID field in our item
-    let id = props.item.item_id;
-
-    //look for item in cart array
-    let existingItem = cartCopy.find(
-      (cartItem) =>
-        cartItem.item_id === id && cartItem.order_type === formValues.order_type
-    );
-
-    //if item already exists
-    if (existingItem) {
-      existingItem.cart_quantity =
-        Number(existingItem.cart_quantity) + Number(formValues.order_quantity); //update this to be number selected
-    } else {
-      //if item doesn't exist, simply add it
-      cartCopy.push(itemObj);
-    }
-
-    //update app state
-    props.setCart(cartCopy);
-
-    //make cart a string and store in local space
-    let stringCart = JSON.stringify(cartCopy);
-    localStorage.setItem("cart", stringCart);
-    handleSelectorClose();
-    setFormValues(defaultValues);
   }
 
   return (
@@ -229,6 +257,12 @@ const ItemCard = (props) => {
         formValues={formValues}
         setFormValues={setFormValues}
         handleAddToCart={handleAddToCart}
+        quantityError={quantityError}
+        setQuantityError={setQuantityError}
+        typeError={typeError}
+        setTypeError={setTypeError}
+        sizeError={sizeError}
+        setSizeError={setSizeError}
       />
     </div>
   );

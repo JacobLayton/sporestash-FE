@@ -24,6 +24,15 @@ function SelectorCard(props) {
       ...props.formValues,
       [name]: value,
     };
+    if (name === "order_quantity" && props.quantityError) {
+      props.setQuantityError(false);
+    }
+    if (name === "order_type" && props.typeError) {
+      props.setTypeError(false);
+    }
+    if (name === "order_size" && props.sizeError) {
+      props.setSizeError(false);
+    }
     props.setFormValues(updatedFormValues);
   };
 
@@ -67,6 +76,7 @@ function SelectorCard(props) {
               name="order_type"
               labelId="type-label"
               label="Type"
+              error={props.typeError}
               value={props.formValues.order_type}
               onChange={handleSelectChange}
             >
@@ -116,6 +126,7 @@ function SelectorCard(props) {
               name="order_size"
               labelId="size-label"
               label="Size"
+              error={props.sizeError}
               value={props.formValues.order_size}
               onChange={handleSelectChange}
             >
@@ -136,6 +147,7 @@ function SelectorCard(props) {
             name="order_quantity"
             labelId="quantity-label"
             label="Quantity"
+            error={props.quantityError}
             value={props.formValues.order_quantity}
             onChange={handleSelectChange}
           >
