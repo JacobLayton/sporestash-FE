@@ -72,6 +72,24 @@ const ItemCard = (props) => {
     }
     return allFieldsComplete;
   }
+  function calculateItemPrice(item) {
+    let itemPrice;
+    const { order_type } = formValues;
+    if (item.item_category !== "merch") {
+      if (order_type === "swab") {
+        itemPrice = item.swab_price;
+      } else if (order_type === "print") {
+        itemPrice = item.print_price;
+      } else if (order_type === "syringe") {
+        itemPrice = item.syringe_price;
+      } else {
+        itemPrice = item.item_price;
+      }
+    } else {
+      itemPrice = item.item_price;
+    }
+    return itemPrice;
+  }
   function handleAddToCart(e) {
     const allFieldsComplete = formValidation(props.item, formValues);
     if (allFieldsComplete) {
@@ -80,7 +98,7 @@ const ItemCard = (props) => {
         order_type: formValues.order_type,
         id: `${props.item.item_id}-${formValues.order_type}`,
         item_name: props.item.item_name,
-        item_price: props.item.item_price,
+        item_price: calculateItemPrice(props.item),
         image_url: props.item.image_url,
         cart_quantity: formValues.order_quantity,
         order_size: formValues.order_size,
