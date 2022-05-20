@@ -4,7 +4,8 @@
 }
 
 .cart-card-container img {
-  height: 120px;
+  /* height: 120px; */
+  aspect-ratio: 1 / 1;
   width: 120px;
   object-fit: cover;
   object-position: 50% 50%;

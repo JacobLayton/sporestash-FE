@@ -70,7 +70,7 @@ function DesktopCart(props) {
             </button>
             <button
               className="desktop-back-shop-button"
-              onClick={props.toggleCart}
+              onClick={props.toggleDesktopCart}
             >
               Back To Shop
             </button>

@@ -9,6 +9,10 @@
   background-image: none;
 }
 
+.MuiPaper-root::-webkit-scrollbar {
+  display: none;
+}
+
 .cart-x {
   color: var(--purple);
   height: 25px;
@@ -35,11 +39,19 @@
   justify-content: space-between;
 }
 .cart-items {
-  max-height: 60vh;
-  /* overflow-y: auto; */
-  /* scrollbar-width: thin;
+  max-height: 50vh;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* overflow-y: auto;
+  scrollbar-width: thin;
   scrollbar-color: black; */
+  /* overflow: overlay; /*SHOULD THIS BE REMOVED?*/
+  overflow-y: scroll;
 }
+
+/* .cart-items::-webkit-scrollbar {
+  display: none;
+} */
 
 .cart-checkout {
   display: flex;
@@ -93,5 +105,8 @@
   }
   .cart-x {
     top: 4%;
+  }
+  .cart-items {
+    max-height: 50vh;
   }
 }
