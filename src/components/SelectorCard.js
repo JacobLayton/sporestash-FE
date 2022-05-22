@@ -12,8 +12,25 @@ const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="left" ref={ref} {...props} />;
 });
 
+function getItemPrice(item, orderType) {
+  let price = item.item_price;
+  if (item.item_category !== "merch") {
+    if (orderType === "swab") {
+      price = item.swab_price;
+    }
+    if (orderType === "print") {
+      price = item.print_price;
+    }
+    if (orderType === "syringe") {
+      price = item.syringe_price;
+    }
+  }
+  return price;
+}
+
 function SelectorCard(props) {
   const { onClose, selectedValue, open } = props;
+  const itemPrice = getItemPrice(props.item, props.formValues.order_type);
 
   const handleClose = () => {
     onClose(selectedValue);
@@ -163,6 +180,9 @@ function SelectorCard(props) {
             <MenuItem value={"10"}>10</MenuItem>
           </Select>
         </FormControl>
+        <div className="selector-card-price-info">
+          <h4>${itemPrice} each</h4>
+        </div>
         <div className="selector-card-btn-container">
           <button onClick={props.handleAddToCart}>Add To Cart</button>
         </div>

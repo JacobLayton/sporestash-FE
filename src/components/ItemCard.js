@@ -7,6 +7,22 @@ import { InputLabel } from "@mui/material";
 import { MenuItem } from "@mui/material";
 import "../styles/item-card.css";
 
+function getItemPrice(item, orderType) {
+  let price = item.item_price;
+  if (item.item_category !== "merch") {
+    if (orderType === "swab") {
+      price = item.swab_price;
+    }
+    if (orderType === "print") {
+      price = item.print_price;
+    }
+    if (orderType === "syringe") {
+      price = item.syringe_price;
+    }
+  }
+  return price;
+}
+
 const defaultValues = {
   order_type: "",
   order_quantity: "",
@@ -20,6 +36,7 @@ const ItemCard = (props) => {
   const [quantityError, setQuantityError] = useState(false);
   const [typeError, setTypeError] = useState(false);
   const [sizeError, setSizeError] = useState(false);
+  const itemPrice = getItemPrice(props.item, formValues.order_type);
   function handleClickOpen() {
     setMoreInfoOpen(true);
   }
@@ -267,7 +284,7 @@ const ItemCard = (props) => {
             </FormControl>
           </div>
           <div className="desktop-card-right">
-            <span className="desktop-price">${props.item.item_price}</span>
+            <span className="desktop-price">${itemPrice}</span>
             <button className="desktop-add-cart-btn" onClick={handleAddToCart}>
               Add To Cart
             </button>

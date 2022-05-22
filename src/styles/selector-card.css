@@ -43,6 +43,10 @@
 .spacer {
   margin-top: 2vh;
 }
+.selector-card-price-info h4 {
+  color: var(--orange);
+  margin-bottom: 0;
+}
 .selector-card-btn-container {
   text-align: center;
   width: 100%;
