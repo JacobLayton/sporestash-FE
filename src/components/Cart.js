@@ -17,26 +17,30 @@ function Cart(props) {
     return (orderSubtotal +=
       Number(cartItem.item_price) * Number(cartItem.cart_quantity));
   });
+  // function onCheckoutClick(e) {
+  //   const cartData = JSON.stringify(props.cart);
+  //   axios
+  //     .post(`${process.env.REACT_APP_PAYMENT_URL}`, cartData, {
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     })
+  //     .then((res) => {
+  //       console.log("Res: ", res);
+  //       if (res.status === 200) return res.data;
+  //       return res.json().then((json) => Promise.reject(json));
+  //     })
+  //     .then(({ url }) => {
+  //       window.location = url;
+  //     })
+  //     .catch((err) => {
+  //       console.error(err.error);
+  //     });
+  // }
   function onCheckoutClick(e) {
-    console.log("checkout");
-    const cartData = JSON.stringify(props.cart);
-    axios
-      .post(`${process.env.REACT_APP_PAYMENT_URL}`, cartData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((res) => {
-        console.log("Res: ", res);
-        if (res.status === 200) return res.data;
-        return res.json().then((json) => Promise.reject(json));
-      })
-      .then(({ url }) => {
-        window.location = url;
-      })
-      .catch((err) => {
-        console.error(err.error);
-      });
+    alert(
+      "This website is still in BETA mode and has not gone live yet. Please check back soon"
+    );
   }
   return (
     <Dialog

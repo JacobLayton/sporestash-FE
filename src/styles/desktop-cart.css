@@ -43,7 +43,7 @@
   /* scrollbar-width: thin;
     scrollbar-color: black; */
   /* overflow: overlay; /* SHOULD THIS BE REMOVED? */
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 /* .desktop-cart-items::-webkit-scrollbar {
   display: none;
