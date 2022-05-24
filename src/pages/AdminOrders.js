@@ -7,47 +7,64 @@ import { Button } from "@mui/material";
 import "../styles/admin-orders.css";
 
 function AdminOrders() {
+  const { getAccessTokenSilently } = useAuth0();
   const [orders, setOrders] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [orderDetails, setOrderDetails] = useState({});
 
   useEffect(() => {
-    let mounting = true;
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/orders`)
-      .then((res) => {
-        if (mounting) {
-          const ordersWithId = [];
-          res.data.map((order) => {
-            order.id = order.order_id;
-            return ordersWithId.push(order);
-          });
-          setOrders(res.data);
-        }
-      })
-      .catch((err) => {
-        console.log("Error in get request", err);
-      });
-    return () => (mounting = false);
-  }, []);
+    async function getOrders() {
+      const token = await getAccessTokenSilently();
+      let mounting = true;
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/orders`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (mounting) {
+            const ordersWithId = [];
+            res.data.map((order) => {
+              order.id = order.order_id;
+              return ordersWithId.push(order);
+            });
+            setOrders(res.data);
+          }
+        })
+        .catch((err) => {
+          console.log("Error in get request", err);
+        });
+      return () => (mounting = false);
+    }
+    getOrders();
+  }, [getAccessTokenSilently]);
   useEffect(() => {
-    let mounting = true;
-    axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/customers`)
-      .then((res) => {
-        if (mounting) {
-          const customerObj = {};
-          res.data.map((customer) => {
-            return (customerObj[customer.stripe_id] = customer);
-          });
-          setCustomers(customerObj);
-        }
-      })
-      .catch((err) => {
-        console.log("Error in get request", err);
-      });
-    return () => (mounting = false);
-  }, []);
+    async function getCustomers() {
+      const token = await getAccessTokenSilently();
+      let mounting = true;
+      axios
+        .get(`${process.env.REACT_APP_SERVER_URL}/customers`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          if (mounting) {
+            const customerObj = {};
+            res.data.map((customer) => {
+              return (customerObj[customer.stripe_id] = customer);
+            });
+            setCustomers(customerObj);
+          }
+        })
+        .catch((err) => {
+          console.log("Error in get request", err);
+        });
+      return () => (mounting = false);
+    }
+    getCustomers();
+  }, [getAccessTokenSilently]);
 
   function onRowSelected(params) {
     const row = params.row;
@@ -79,7 +96,8 @@ function AdminOrders() {
     setOrderDetails(orderDetailsObj);
   }
 
-  function onFulfilledClick(e) {
+  async function onFulfilledClick(e) {
+    const token = await getAccessTokenSilently();
     const today = new Date().toISOString();
     axios
       .put(
@@ -87,6 +105,11 @@ function AdminOrders() {
         {
           fulfilled: true,
           ship_date: today,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       )
       .then((res) => {
@@ -108,6 +131,12 @@ function AdminOrders() {
         console.log("Error updating order fullfilled: ", err);
         alert("Could not set to fulfilled");
       });
+  }
+  function onDeleteOrderClick(e) {
+    // Not sure if we want the ability to delete orders
+    alert(
+      "I decided to disable this button because I figured you won't be deleting orders. Let me know if you have a need for it."
+    );
   }
 
   const columns = [
@@ -211,7 +240,11 @@ function AdminOrders() {
                 Fulfilled
               </Button>
               <div className="spacer" />
-              <Button variant="outlined" color="secondary">
+              <Button
+                variant="outlined"
+                color="secondary"
+                onClick={onDeleteOrderClick}
+              >
                 Delete Order
               </Button>
             </div>
