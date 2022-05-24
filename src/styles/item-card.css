@@ -176,6 +176,18 @@
   .desktop-card-left .MuiOutlinedInput-root {
     border-radius: 3px;
   }
+  .desktop-card-type-container {
+    display: flex;
+    align-items: center;
+  }
+  .desktop-card-info {
+    margin-left: 15px;
+    aspect-ratio: 1/1;
+    height: 20px;
+  }
+  .desktop-card-info:hover {
+    cursor: pointer;
+  }
   .desktop-card-inputs-type legend {
     width: 35px;
   }

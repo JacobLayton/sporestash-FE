@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import MoreInfoCard from "../components/MoreInfoCard";
 import SelectorCard from "../components/SelectorCard";
 import { Select } from "@mui/material";
@@ -37,6 +38,9 @@ const ItemCard = (props) => {
   const [typeError, setTypeError] = useState(false);
   const [sizeError, setSizeError] = useState(false);
   const itemPrice = getItemPrice(props.item, formValues.order_type);
+  function handleInfoClick(e) {
+    window.open("http://localhost:3000/info?type_info=true");
+  }
   function handleClickOpen() {
     setMoreInfoOpen(true);
   }
@@ -181,55 +185,62 @@ const ItemCard = (props) => {
         <div className="desktop-card-contents">
           <div className="desktop-card-left">
             {props.item.item_category !== "merch" ? (
-              <FormControl className="desktop-card-inputs-type" size="small">
-                <InputLabel id="type-label">Type</InputLabel>
-                <Select
-                  id="desktop-order-type"
-                  name="order_type"
-                  labelId="type-label"
-                  label="Type"
-                  error={typeError}
-                  value={formValues.order_type}
-                  onChange={handleSelectChange}
-                >
-                  <MenuItem
-                    value={"swab"}
-                    disabled={!props.item.swab_available}
+              <div className="desktop-card-type-container">
+                <FormControl className="desktop-card-inputs-type" size="small">
+                  <InputLabel id="type-label">Type</InputLabel>
+                  <Select
+                    id="desktop-order-type"
+                    name="order_type"
+                    labelId="type-label"
+                    label="Type"
+                    error={typeError}
+                    value={formValues.order_type}
+                    onChange={handleSelectChange}
                   >
-                    Swab
-                  </MenuItem>
-                  <MenuItem
-                    value={"print"}
-                    disabled={!props.item.print_available}
-                  >
-                    Print
-                    {props.item.print_available &&
-                    Number(props.item.print_price) -
-                      Number(props.item.item_price) !==
-                      0
-                      ? ` (+ $${
-                          Number(props.item.print_price) -
-                          Number(props.item.item_price)
-                        })`
-                      : ""}
-                  </MenuItem>
-                  <MenuItem
-                    value={"syringe"}
-                    disabled={!props.item.syringe_available}
-                  >
-                    Syringe
-                    {props.item.syringe_available &&
-                    Number(props.item.syringe_price) -
-                      Number(props.item.item_price) !==
-                      0
-                      ? ` +$${
-                          Number(props.item.syringe_price) -
-                          Number(props.item.item_price)
-                        }`
-                      : ""}
-                  </MenuItem>
-                </Select>
-              </FormControl>
+                    <MenuItem
+                      value={"swab"}
+                      disabled={!props.item.swab_available}
+                    >
+                      Swab
+                    </MenuItem>
+                    <MenuItem
+                      value={"print"}
+                      disabled={!props.item.print_available}
+                    >
+                      Print
+                      {props.item.print_available &&
+                      Number(props.item.print_price) -
+                        Number(props.item.item_price) !==
+                        0
+                        ? ` (+ $${
+                            Number(props.item.print_price) -
+                            Number(props.item.item_price)
+                          })`
+                        : ""}
+                    </MenuItem>
+                    <MenuItem
+                      value={"syringe"}
+                      disabled={!props.item.syringe_available}
+                    >
+                      Syringe
+                      {props.item.syringe_available &&
+                      Number(props.item.syringe_price) -
+                        Number(props.item.item_price) !==
+                        0
+                        ? ` +$${
+                            Number(props.item.syringe_price) -
+                            Number(props.item.item_price)
+                          }`
+                        : ""}
+                    </MenuItem>
+                  </Select>
+                </FormControl>
+                <FontAwesomeIcon
+                  icon={["fas", "circle-question"]}
+                  className="desktop-card-info"
+                  onClick={handleInfoClick}
+                />
+              </div>
             ) : (
               <FormControl
                 className={

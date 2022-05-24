@@ -9,6 +9,15 @@ import {
   faX,
   faCircleInfo,
   faCaretDown,
+  faCircleQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBars, faTrashCan, faCartShopping, faX, faCircleInfo, faCaretDown);
+library.add(
+  faBars,
+  faTrashCan,
+  faCartShopping,
+  faX,
+  faCircleInfo,
+  faCaretDown,
+  faCircleQuestion
+);
