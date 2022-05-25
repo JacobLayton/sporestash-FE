@@ -321,6 +321,7 @@ const ItemCard = (props) => {
         setTypeError={setTypeError}
         sizeError={sizeError}
         setSizeError={setSizeError}
+        handleInfoClick={handleInfoClick}
       />
     </div>
   );

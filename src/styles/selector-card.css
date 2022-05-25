@@ -75,6 +75,26 @@
   margin-bottom: 3%;
 }
 
+.selector-card-type-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selector-card-type-container .MuiFormControl-root {
+  width: 60%;
+  height: 45px;
+  margin-bottom: 3%;
+}
+
+.selector-card-info {
+  position: absolute;
+  right: 11%;
+}
+.selector-card-info:hover {
+  cursor: pointer;
+}
 .selector-card-size-hidden {
   display: none !important;
 }
