@@ -34,14 +34,46 @@ const AccordionSummary = styled((props) => (
   },
 }));
 
-function FAQ() {
+function FAQ(props) {
   const [expanded, setExpanded] = React.useState(false);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
+  React.useEffect(() => {
+    if (props.expandInfo) {
+      setExpanded("panel0");
+    }
+  }, [props.expandInfo]);
   return (
     <div>
       <h1>Frequently Asked Questions</h1>
+      <Accordion
+        expanded={expanded === "panel0"}
+        onChange={handleChange("panel0")}
+      >
+        <AccordionSummary aria-controls="panel0a-content" id="panel0a-header">
+          <Typography>
+            What is the difference between a spore print and a spore/culture
+            syringe?
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            Spore prints are collections of spores taken on a sterile medium,
+            usually clean paper or foil, under sterile conditions. The spores
+            are collected by placing a mature mushroom cap on the medium and
+            allowing the cap to release spores. The spores then adhere to the
+            surface of the medium after drying and form a "print." Prints are
+            often used directly to observe spores under a microscope. Spore
+            syringes are simply a mixture of clean spores in a sterile solution.
+            This allows for direct microscopic examination of hydrated spores.
+            Liquid culture syringes of edible, medicinal, and novelty species
+            contain living mycelium on a nutrient broth solution and are
+            designed to allow the direct inoculation of healthy tissue into
+            substrate.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
       <Accordion
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -247,33 +279,6 @@ function FAQ() {
         onChange={handleChange("panel9")}
       >
         <AccordionSummary aria-controls="panel9a-content" id="panel9a-header">
-          <Typography>
-            What is the difference between a spore print and a spore/culture
-            syringe?
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Spore prints are collections of spores taken on a sterile medium,
-            usually clean paper or foil, under sterile conditions. The spores
-            are collected by placing a mature mushroom cap on the medium and
-            allowing the cap to release spores. The spores then adhere to the
-            surface of the medium after drying and form a "print." Prints are
-            often used directly to observe spores under a microscope. Spore
-            syringes are simply a mixture of clean spores in a sterile solution.
-            This allows for direct microscopic examination of hydrated spores.
-            Liquid culture syringes of edible, medicinal, and novelty species
-            contain living mycelium on a nutrient broth solution and are
-            designed to allow the direct inoculation of healthy tissue into
-            substrate.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        expanded={expanded === "panel10"}
-        onChange={handleChange("panel10")}
-      >
-        <AccordionSummary aria-controls="panel10a-content" id="panel10a-header">
           <Typography>
             My cultures or spores appear to be contaminated, now what?
           </Typography>

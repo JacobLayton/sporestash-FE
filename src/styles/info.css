@@ -11,11 +11,15 @@
 }
 .terms-container {
   padding: 0 2%;
+  margin-top: 8vh;
 }
 .privacy-container {
   padding: 0 2%;
+  margin-top: 8vh;
 }
 .contact-container {
+  margin-top: 8vh;
+  margin-bottom: 4vh;
 }
 .info-container h1 {
   font-size: 25px;
