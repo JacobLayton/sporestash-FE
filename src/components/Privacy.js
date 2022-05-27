@@ -31,8 +31,13 @@ const AccordionSummary = styled((props) => (
   },
 }));
 
-function Privacy() {
+function Privacy(props) {
   const [expanded, setExpanded] = React.useState(false);
+  React.useEffect(() => {
+    if (props.expandPrivacy) {
+      setExpanded("panel1");
+    }
+  }, [props.expandPrivacy]);
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };

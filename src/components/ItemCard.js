@@ -39,7 +39,7 @@ const ItemCard = (props) => {
   const [sizeError, setSizeError] = useState(false);
   const itemPrice = getItemPrice(props.item, formValues.order_type);
   function handleInfoClick(e) {
-    window.open("http://localhost:3000/info?type_info=true");
+    window.open(`/info?scroll_to=type-info`);
   }
   function handleClickOpen() {
     setMoreInfoOpen(true);

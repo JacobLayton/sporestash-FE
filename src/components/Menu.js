@@ -30,16 +30,16 @@ function Menu(props) {
         <Link to="/shop" onClick={props.toggleMenu}>
           <MenuItem>Home</MenuItem>
         </Link>
-        <Link to="/info" onClick={props.toggleMenu}>
+        <Link to="/info?scroll_to=faq" onClick={props.toggleMenu}>
           <MenuItem>FAQs</MenuItem>
         </Link>
-        <Link to="/info" onClick={props.toggleMenu}>
+        <Link to="/info?scroll_to=terms" onClick={props.toggleMenu}>
           <MenuItem>Terms & Conditions</MenuItem>
         </Link>
-        <Link to="/info" onClick={props.toggleMenu}>
+        <Link to="/info?scroll_to=privacy" onClick={props.toggleMenu}>
           <MenuItem>Privacy Statement</MenuItem>
         </Link>
-        <Link to="/info" onClick={props.toggleMenu}>
+        <Link to="/info?scroll_to=contact" onClick={props.toggleMenu}>
           <MenuItem>Contact Us</MenuItem>
         </Link>
       </div>
