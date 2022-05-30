@@ -24,6 +24,22 @@ function getItemPrice(item, orderType) {
   return price;
 }
 
+function getQuantityRemaining(item, orderType) {
+  let quantityRemaining = 0;
+  if (item.item_category === "merch") {
+    quantityRemaining = Number(item.item_quantity);
+  } else {
+    if (orderType === "swab") {
+      quantityRemaining = Number(item.swab_quantity);
+    } else if (orderType === "print") {
+      quantityRemaining = Number(item.print_quantity);
+    } else if (orderType === "syringe") {
+      quantityRemaining = Number(item.syringe_quantity);
+    }
+  }
+  return quantityRemaining;
+}
+
 const defaultValues = {
   order_type: "",
   order_quantity: "",
@@ -38,6 +54,10 @@ const ItemCard = (props) => {
   const [typeError, setTypeError] = useState(false);
   const [sizeError, setSizeError] = useState(false);
   const itemPrice = getItemPrice(props.item, formValues.order_type);
+  const quantityRemaining = getQuantityRemaining(
+    props.item,
+    formValues.order_type
+  );
   function handleInfoClick(e) {
     window.open(`/info?scroll_to=type-info`);
   }
@@ -124,6 +144,7 @@ const ItemCard = (props) => {
         cart_quantity: formValues.order_quantity,
         order_size: formValues.order_size,
         item_category: props.item.item_category,
+        quantity_remaining: quantityRemaining,
       };
       if (props.item.item_category === "merch") {
         if (props.item.display_size) {
@@ -281,16 +302,36 @@ const ItemCard = (props) => {
                 value={formValues.order_quantity}
                 onChange={handleSelectChange}
               >
-                <MenuItem value={"1"}>1</MenuItem>
-                <MenuItem value={"2"}>2</MenuItem>
-                <MenuItem value={"3"}>3</MenuItem>
-                <MenuItem value={"4"}>4</MenuItem>
-                <MenuItem value={"5"}>5</MenuItem>
-                <MenuItem value={"6"}>6</MenuItem>
-                <MenuItem value={"7"}>7</MenuItem>
-                <MenuItem value={"8"}>8</MenuItem>
-                <MenuItem value={"9"}>9</MenuItem>
-                <MenuItem value={"10"}>10</MenuItem>
+                <MenuItem value={"1"} disabled={!(quantityRemaining >= 1)}>
+                  1
+                </MenuItem>
+                <MenuItem value={"2"} disabled={!(quantityRemaining >= 2)}>
+                  2
+                </MenuItem>
+                <MenuItem value={"3"} disabled={!(quantityRemaining >= 3)}>
+                  3
+                </MenuItem>
+                <MenuItem value={"4"} disabled={!(quantityRemaining >= 4)}>
+                  4
+                </MenuItem>
+                <MenuItem value={"5"} disabled={!(quantityRemaining >= 5)}>
+                  5
+                </MenuItem>
+                <MenuItem value={"6"} disabled={!(quantityRemaining >= 6)}>
+                  6
+                </MenuItem>
+                <MenuItem value={"7"} disabled={!(quantityRemaining >= 7)}>
+                  7
+                </MenuItem>
+                <MenuItem value={"8"} disabled={!(quantityRemaining >= 8)}>
+                  8
+                </MenuItem>
+                <MenuItem value={"9"} disabled={!(quantityRemaining >= 9)}>
+                  9
+                </MenuItem>
+                <MenuItem value={"10"} disabled={!(quantityRemaining >= 10)}>
+                  10
+                </MenuItem>
               </Select>
             </FormControl>
           </div>
@@ -322,6 +363,7 @@ const ItemCard = (props) => {
         sizeError={sizeError}
         setSizeError={setSizeError}
         handleInfoClick={handleInfoClick}
+        quantityRemaining={quantityRemaining}
       />
     </div>
   );

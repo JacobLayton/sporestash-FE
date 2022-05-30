@@ -178,16 +178,36 @@ function SelectorCard(props) {
             value={props.formValues.order_quantity}
             onChange={handleSelectChange}
           >
-            <MenuItem value={"1"}>1</MenuItem>
-            <MenuItem value={"2"}>2</MenuItem>
-            <MenuItem value={"3"}>3</MenuItem>
-            <MenuItem value={"4"}>4</MenuItem>
-            <MenuItem value={"5"}>5</MenuItem>
-            <MenuItem value={"6"}>6</MenuItem>
-            <MenuItem value={"7"}>7</MenuItem>
-            <MenuItem value={"8"}>8</MenuItem>
-            <MenuItem value={"9"}>9</MenuItem>
-            <MenuItem value={"10"}>10</MenuItem>
+            <MenuItem value={"1"} disabled={!(props.quantityRemaining >= 1)}>
+              1
+            </MenuItem>
+            <MenuItem value={"2"} disabled={!(props.quantityRemaining >= 2)}>
+              2
+            </MenuItem>
+            <MenuItem value={"3"} disabled={!(props.quantityRemaining >= 3)}>
+              3
+            </MenuItem>
+            <MenuItem value={"4"} disabled={!(props.quantityRemaining >= 4)}>
+              4
+            </MenuItem>
+            <MenuItem value={"5"} disabled={!(props.quantityRemaining >= 5)}>
+              5
+            </MenuItem>
+            <MenuItem value={"6"} disabled={!(props.quantityRemaining >= 6)}>
+              6
+            </MenuItem>
+            <MenuItem value={"7"} disabled={!(props.quantityRemaining >= 7)}>
+              7
+            </MenuItem>
+            <MenuItem value={"8"} disabled={!(props.quantityRemaining >= 8)}>
+              8
+            </MenuItem>
+            <MenuItem value={"9"} disabled={!(props.quantityRemaining >= 9)}>
+              9
+            </MenuItem>
+            <MenuItem value={"10"} disabled={!(props.quantityRemaining >= 10)}>
+              10
+            </MenuItem>
           </Select>
         </FormControl>
         <div className="selector-card-price-info">

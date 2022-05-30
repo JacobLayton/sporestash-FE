@@ -88,16 +88,66 @@ function CartCard(props) {
                   },
                 }}
               >
-                <MenuItem value={"1"}>1</MenuItem>
-                <MenuItem value={"2"}>2</MenuItem>
-                <MenuItem value={"3"}>3</MenuItem>
-                <MenuItem value={"4"}>4</MenuItem>
-                <MenuItem value={"5"}>5</MenuItem>
-                <MenuItem value={"6"}>6</MenuItem>
-                <MenuItem value={"7"}>7</MenuItem>
-                <MenuItem value={"8"}>8</MenuItem>
-                <MenuItem value={"9"}>9</MenuItem>
-                <MenuItem value={"10"}>10</MenuItem>
+                <MenuItem
+                  value={"1"}
+                  disabled={!(props.item.quantity_remaining >= 1)}
+                >
+                  1
+                </MenuItem>
+                <MenuItem
+                  value={"2"}
+                  disabled={!(props.item.quantity_remaining >= 2)}
+                >
+                  2
+                </MenuItem>
+                <MenuItem
+                  value={"3"}
+                  disabled={!(props.item.quantity_remaining >= 3)}
+                >
+                  3
+                </MenuItem>
+                <MenuItem
+                  value={"4"}
+                  disabled={!(props.item.quantity_remaining >= 4)}
+                >
+                  4
+                </MenuItem>
+                <MenuItem
+                  value={"5"}
+                  disabled={!(props.item.quantity_remaining >= 5)}
+                >
+                  5
+                </MenuItem>
+                <MenuItem
+                  value={"6"}
+                  disabled={!(props.item.quantity_remaining >= 6)}
+                >
+                  6
+                </MenuItem>
+                <MenuItem
+                  value={"7"}
+                  disabled={!(props.item.quantity_remaining >= 7)}
+                >
+                  7
+                </MenuItem>
+                <MenuItem
+                  value={"8"}
+                  disabled={!(props.item.quantity_remaining >= 8)}
+                >
+                  8
+                </MenuItem>
+                <MenuItem
+                  value={"9"}
+                  disabled={!(props.item.quantity_remaining >= 9)}
+                >
+                  9
+                </MenuItem>
+                <MenuItem
+                  value={"10"}
+                  disabled={!(props.item.quantity_remaining >= 10)}
+                >
+                  10
+                </MenuItem>
               </TextField>
             </FormControl>
             <h4>
