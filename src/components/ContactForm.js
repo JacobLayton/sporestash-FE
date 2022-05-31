@@ -23,12 +23,14 @@ const defaultContactValues = {
   contact_message: "",
 };
 
-// const sizes = ["XS", "SM", "MD", "LG", "XL", "XXL"];
-
 function ContactForm() {
-  let navigate = useNavigate();
-  let location = useLocation();
   const [contactValues, setContactValues] = useState(defaultContactValues);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [categoryError, setCategoryError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [subjectError, setSubjectError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
 
   const handleCategoryChange = (e) => {
     let { name, value } = e.target;
@@ -36,6 +38,9 @@ function ContactForm() {
       ...contactValues,
       [name]: value,
     };
+    if (name === "contact_category") {
+      setCategoryError(false);
+    }
     setContactValues(updatedFormValues);
   };
   const handleInputChange = (e) => {
@@ -44,136 +49,154 @@ function ContactForm() {
       ...contactValues,
       [name]: value,
     };
+    if (name === "contact_name") {
+      setNameError(false);
+    }
+    if (name === "contact_email") {
+      setEmailError(false);
+    }
+    if (name === "contact_subject") {
+      setSubjectError(false);
+    }
+    if (name === "contact_message") {
+      setMessageError(false);
+    }
     setContactValues(updatedFormValues);
   };
-  //   const handleBooleanChange = (e) => {
-  //     const name = e.target.name;
-  //     const value = e.target.value === "true";
-  //     const updatedFormValues = {
-  //       ...formValues,
-  //       [name]: value,
-  //     };
-  //     if (name === "display_size" && value === false) {
-  //       updatedFormValues.sizes_available = [];
-  //     }
-  //     setFormValues(updatedFormValues);
-  //   };
 
-  //   const handleSubmit = async (event) => {
-  //     event.preventDefault();
-  //     const token = await getAccessTokenSilently();
-  //     const formValuesCopy = formValues;
-  //     const formObjKeys = Object.keys(formValuesCopy);
-  //     for (let i = 0; i < formObjKeys.length; i++) {
-  //       if (
-  //         (formObjKeys[i].includes("price") ||
-  //           formObjKeys[i].includes("quantity")) &&
-  //         formValuesCopy[formObjKeys[i]] === ""
-  //       ) {
-  //         formValuesCopy[formObjKeys[i]] = null;
-  //       }
-  //     }
-  //     if (formValues.sizes_available && formValues.sizes_available.length > 0) {
-  //       formValuesCopy.sizes_available = JSON.stringify(
-  //         formValues.sizes_available
-  //       );
-  //     } else {
-  //       formValuesCopy.sizes_available = null;
-  //     }
-  //     axios
-  //       .post(`${process.env.REACT_APP_SERVER_URL}/items`, formValuesCopy, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       })
-  //       .then((res) => {
-  //         console.log("RES: ", res);
-  //         navigate("/admin" + location.search);
-  //       })
-  //       .catch((err) => {
-  //         console.log("Error creating item: ", err);
-  //         alert("Error creating item");
-  //       });
-  //   };
+  function formValidation(formData) {
+    let allFieldsComplete = true;
+    if (formData.contact_category === "") {
+      setCategoryError(true);
+      allFieldsComplete = false;
+    }
+    if (formData.contact_name === "") {
+      setNameError(true);
+      allFieldsComplete = false;
+    }
+    if (formData.contact_email === "") {
+      setEmailError(true);
+      allFieldsComplete = false;
+    }
+    if (formData.contact_subject === "") {
+      setSubjectError(true);
+      allFieldsComplete = false;
+    }
+    if (formData.contact_message === "") {
+      setMessageError(true);
+      allFieldsComplete = false;
+    }
+    return allFieldsComplete;
+  }
   const handleSubmit = async (event) => {
     event.preventDefault();
-    alert(contactValues);
+    const allFieldsComplete = formValidation(contactValues);
+    if (allFieldsComplete) {
+      const messageData = {
+        category: contactValues.contact_category,
+        name: contactValues.contact_name,
+        email: contactValues.contact_email,
+        subject: contactValues.contact_subject,
+        message: contactValues.contact_message,
+      };
+      await axios
+        .post(process.env.REACT_APP_EMAIL_URL, { messageData })
+        .then((res) => {
+          console.log("res: ", res);
+          setFormSubmitted(true);
+        })
+        .catch((err) => {
+          console.log("Error: ", err);
+        });
+    }
   };
   return (
     <div className="contact-form-container">
       <h1>Contact Us</h1>
-      <form onSubmit={handleSubmit}>
-        <Grid>
-          <Grid container direction="column">
-            <FormControl fullWidth>
-              <InputLabel id="contact-category-label" sx={{ ml: 1, mt: 1 }}>
-                Category
-              </InputLabel>
-              <Select
-                id="contact-category-select"
-                name="contact_category"
-                labelId="contact-category-label"
-                label="Category"
-                value={contactValues.contact_category}
-                onChange={handleCategoryChange}
+      {formSubmitted ? (
+        <div className="thankyou-submission">
+          <h2>Your message has been sent</h2>
+          <h3>Please allow 48 hours for us to respond</h3>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <Grid>
+            <Grid container direction="column">
+              <FormControl fullWidth>
+                <InputLabel id="contact-category-label" sx={{ ml: 1, mt: 1 }}>
+                  Category
+                </InputLabel>
+                <Select
+                  id="contact-category-select"
+                  name="contact_category"
+                  labelId="contact-category-label"
+                  label="Category"
+                  value={contactValues.contact_category}
+                  onChange={handleCategoryChange}
+                  sx={{ m: 1 }}
+                  error={categoryError}
+                >
+                  <MenuItem value={"General Inquiry"}>General Inquiry</MenuItem>
+                  <MenuItem value={"Orders"}>Orders</MenuItem>
+                </Select>
+              </FormControl>
+              <TextField
+                id="contact-name-input"
+                name="contact_name"
+                label="Name"
+                type="text"
+                value={contactValues.contact_name}
+                onChange={handleInputChange}
                 sx={{ m: 1 }}
+                error={nameError}
+              />
+              <TextField
+                id="contact-email-input"
+                name="contact_email"
+                label="Email"
+                type="text"
+                value={contactValues.contact_email}
+                onChange={handleInputChange}
+                sx={{ m: 1 }}
+                error={emailError}
+              />
+              <TextField
+                id="contact-subject-input"
+                name="contact_subject"
+                label="Contact Subject"
+                type="text"
+                value={contactValues.contact_subject}
+                onChange={handleInputChange}
+                sx={{ m: 1 }}
+                error={subjectError}
+              />
+              <TextField
+                id="contact-message-input"
+                name="contact_message"
+                label="Message"
+                multiline
+                minRows={3}
+                type="text"
+                value={contactValues.contact_message}
+                onChange={handleInputChange}
+                sx={{ m: 1 }}
+                error={messageError}
+              />
+            </Grid>
+            <div className="contact-form-buttons">
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                id="contact-form-submit-button"
+                sx={{ ml: 1.2 }}
               >
-                <MenuItem value={"General Inquiry"}>General Inquiry</MenuItem>
-                <MenuItem value={"Orders"}>Orders</MenuItem>
-              </Select>
-            </FormControl>
-            <TextField
-              id="contact-name-input"
-              name="contact_name"
-              label="Name"
-              type="text"
-              value={contactValues.contact_name}
-              onChange={handleInputChange}
-              sx={{ m: 1 }}
-            />
-            <TextField
-              id="contact-email-input"
-              name="contact_email"
-              label="Email"
-              type="text"
-              value={contactValues.contact_email}
-              onChange={handleInputChange}
-              sx={{ m: 1 }}
-            />
-            <TextField
-              id="contact-subject-input"
-              name="contact_subject"
-              label="Contact Subject"
-              type="text"
-              value={contactValues.contact_subject}
-              onChange={handleInputChange}
-              sx={{ m: 1 }}
-            />
-            <TextField
-              id="contact-message-input"
-              name="contact_message"
-              label="Message"
-              multiline
-              minRows={3}
-              type="text"
-              value={contactValues.contact_message}
-              onChange={handleInputChange}
-              sx={{ m: 1 }}
-            />
+                Submit
+              </Button>
+            </div>
           </Grid>
-          <div className="contact-form-buttons">
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              id="contact-form-submit-button"
-              sx={{ ml: 1.2 }}
-            >
-              Submit
-            </Button>
-          </div>
-        </Grid>
-      </form>
+        </form>
+      )}
     </div>
   );
 }

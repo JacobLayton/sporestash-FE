@@ -21,6 +21,24 @@
   margin-top: 8vh;
   margin-bottom: 4vh;
 }
+@keyframes slideUp {
+  0% {
+    transform: translateY(300px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
+}
+.thankyou-submission {
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: 0.2s ease-out 0s 1 slideUp;
+}
 .info-container h1 {
   font-size: 25px;
 }
