@@ -1,0 +1,25 @@
+.loader-wrapper {
+	/* border: 1px solid blue; */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 20vh;
+	width: auto;
+	/* background-color: var(--egg1); */
+}
+
+.loader-wrapper span {
+	color: var(--purple);
+	margin-top: 10px;
+}
+
+@media (min-width: 1200px) {
+	.loader-wrapper {
+		border: 1px solid var(--purple);
+		border-radius: var(--border-radius);
+		height: 25vw;
+		width: 63vw;
+		padding: 1.5%;
+	}
+}
