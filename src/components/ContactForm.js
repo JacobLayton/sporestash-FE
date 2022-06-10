@@ -196,7 +196,7 @@ function ContactForm() {
 								sx={{ ml: 1.2 }}
 								disabled={submitClicked}
 							>
-								Submit
+								{submitClicked ? 'Sending' : 'Submit'}
 							</Button>
 						</div>
 					</Grid>

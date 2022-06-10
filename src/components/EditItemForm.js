@@ -133,6 +133,7 @@ function EditItemForm(props) {
 			})
 			.catch((err) => {
 				console.log('Error creating item: ', err);
+				setSubmitClicked(false);
 				alert('Error editing item');
 			});
 	};
@@ -461,7 +462,7 @@ function EditItemForm(props) {
 							id='edit-form-submit-button'
 							disabled={submitClicked}
 						>
-							Submit
+							{submitClicked ? 'Saving' : 'Submit'}
 						</Button>
 						<div className='form-spacer' />
 						<Link to='/admin' style={{ textDecoration: 'none' }}>

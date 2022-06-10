@@ -164,6 +164,7 @@ function CreateItemForm() {
 			})
 			.catch((err) => {
 				console.log('Error creating item: ', err);
+				setSubmitClicked(false);
 				alert('Error creating item');
 			});
 	};
@@ -492,7 +493,7 @@ function CreateItemForm() {
 							id='create-form-submit-button'
 							disabled={submitClicked}
 						>
-							Submit
+							{submitClicked ? 'Saving' : 'Submit'}
 						</Button>
 						<div className='form-spacer' />
 						<Link to='/admin' style={{ textDecoration: 'none' }}>
