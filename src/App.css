@@ -33,25 +33,30 @@
   }
 } */
 
-@import url("https://fonts.googleapis.com/css2?family=NTR&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=NTR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika+Negative&display=swap');
 
 :root {
-  /* --blue: #113e3e; */
-  --purple: #d6bce0;
-  --orange: #ed8a1b;
-  --border-radius: 15px;
+	/* --blue: #113e3e; */
+	/* --purple: #d6bce0;
+	--orange: #ed8a1b; */
+	/* --purple: #e7effb;
+	--orange: #f5c49b; */
+	/* --purple: #dff2f0; good blue but too bringht*/
+	--purple: #c7d9d7;
+	--orange: #e09b46;
+	--border-radius: 15px;
 }
 
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* max-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* max-height: 100vh;
   max-width: 100vw; */
-  background-color: black;
-  min-height: 100vh;
+	background-color: black;
+	min-height: 100vh;
 }
 
 /* @media (max-width: 599px) {
@@ -62,24 +67,24 @@
 } */
 
 p {
-  font-family: "Signika Negative", sans-serif;
+	font-family: 'Signika Negative', sans-serif;
 }
 span {
-  font-family: "Signika Negative", sans-serif;
+	font-family: 'Signika Negative', sans-serif;
 }
 
 h1 {
-  font-family: "NTR", sans-serif;
+	font-family: 'NTR', sans-serif;
 }
 h2 {
-  font-family: "NTR", sans-serif;
+	font-family: 'NTR', sans-serif;
 }
 h3 {
-  font-family: "NTR", sans-serif;
+	font-family: 'NTR', sans-serif;
 }
 h4 {
-  font-family: "NTR", sans-serif;
+	font-family: 'NTR', sans-serif;
 }
 h5 {
-  font-family: "NTR", sans-serif;
+	font-family: 'NTR', sans-serif;
 }
