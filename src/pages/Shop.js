@@ -4,6 +4,7 @@ import ItemCard from '../components/ItemCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import '../styles/shop.css';
 import sporeStashLogo from '../img/Final_deer_flat.png';
+import sporeStashLogo2 from '../img/Mustacheflatfinal1.png';
 
 function Shop(props) {
 	const [displayedItems, setDisplayedItems] = useState([]);
@@ -55,7 +56,7 @@ function Shop(props) {
 
 	return (
 		<div className='shop-container'>
-			<img src={sporeStashLogo} alt='Spore Stash Logo' className='main-logo' />
+			<img src={sporeStashLogo2} alt='Spore Stash Logo' className='main-logo' />
 			<div className='shop-buttons'>
 				<button
 					onClick={handleCubensisClick}
