@@ -1,135 +1,137 @@
 .shop-container {
-  background: black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 80vh;
-  width: 100%;
+	background: black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	min-height: 80vh;
+	width: 100%;
 }
 .shop-container .coming-soon {
-  text-align: center;
+	text-align: center;
 }
 
 .shop-container .main-logo {
-  width: 46vw;
-  height: auto;
-  margin: 2vh 0 1.5vh 0;
+	width: 46vw;
+	height: auto;
+	margin: 3vh 0 2vh 0;
+	/* opacity: 88%; */
 }
 
 .shop-buttons {
-  padding: 0 4%;
-  width: 100%;
+	padding: 0 4%;
+	width: 100%;
 }
 
 .cubensis-button {
-  border: 1px solid var(--purple);
-  border-right: none;
-  border-radius: var(--border-radius) 0 0 0;
-  background-color: black;
-  color: var(--purple);
-  height: 50px;
-  width: 33.33333%;
-  cursor: pointer;
-  font-size: 22px;
-  font-family: "NTR", sans-serif;
+	border: 1px solid var(--purple);
+	border-right: none;
+	border-radius: var(--border-radius) 0 0 0;
+	background-color: black;
+	color: var(--purple);
+	height: 50px;
+	width: 33.33333%;
+	cursor: pointer;
+	font-size: 22px;
+	font-family: 'NTR', sans-serif;
 }
 .exotic-button {
-  border: 1px solid var(--purple);
-  background-color: black;
-  color: var(--purple);
-  height: 50px;
-  width: 33.33333%;
-  cursor: pointer;
-  font-size: 22px;
-  font-family: "NTR", sans-serif;
+	border: 1px solid var(--purple);
+	background-color: black;
+	color: var(--purple);
+	height: 50px;
+	width: 33.33333%;
+	cursor: pointer;
+	font-size: 22px;
+	font-family: 'NTR', sans-serif;
 }
 .merch-button {
-  border: 1px solid var(--purple);
-  border-left: none;
-  border-radius: 0 var(--border-radius) 0 0;
-  background-color: black;
-  color: var(--purple);
-  height: 50px;
-  width: 33.33333%;
-  cursor: pointer;
-  font-size: 22px;
-  font-family: "NTR", sans-serif;
+	border: 1px solid var(--purple);
+	border-left: none;
+	border-radius: 0 var(--border-radius) 0 0;
+	background-color: black;
+	color: var(--purple);
+	height: 50px;
+	width: 33.33333%;
+	cursor: pointer;
+	font-size: 22px;
+	font-family: 'NTR', sans-serif;
 }
 .active {
-  background-color: var(--purple);
-  color: black;
+	background-color: var(--purple);
+	color: black;
 }
 .shop-cards {
-  min-width: 92%;
-  border: 1px solid var(--purple);
-  border-top: none;
-  border-radius: 0 0 var(--border-radius) var(--border-radius);
-  margin: 0 4%;
-  padding: 2% 2%;
+	min-width: 92%;
+	border: 1px solid var(--purple);
+	border-top: none;
+	border-radius: 0 0 var(--border-radius) var(--border-radius);
+	margin: 0 4%;
+	padding: 2% 2%;
 }
 
 @media (min-width: 600px) {
-  .shop-container {
-    width: 80vw;
-    margin: 0 auto;
-  }
-  .shop-container .main-logo {
-    width: 35vw;
-  }
-  .shop-buttons {
-    padding: 0 15%;
-  }
-  .shop-cards {
-    margin: 0 15%;
-    min-width: 70%;
-  }
+	.shop-container {
+		width: 80vw;
+		margin: 0 auto;
+	}
+	.shop-container .main-logo {
+		width: 35vw;
+		margin: 4vh 0 3vh 0;
+	}
+	.shop-buttons {
+		padding: 0 15%;
+	}
+	.shop-cards {
+		margin: 0 15%;
+		min-width: 70%;
+	}
 }
 @media (min-width: 1200px) {
-  .shop-container {
-    width: 80vw;
-    margin: 0 auto;
-  }
-  .shop-container .main-logo {
-    width: 20vw;
-    margin: 4vh 0 2vh 0;
-  }
-  .shop-buttons {
-    padding: 0 10%;
-    width: 100%;
-    margin-bottom: 1px;
-    margin-left: 2%;
-  }
-  .cubensis-button {
-    width: 12%;
-    border: 1px solid var(--purple);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    /* border-bottom: none; */
-    height: 35px;
-    line-height: 1.6;
-    margin-right: 2px;
-  }
-  .exotic-button {
-    width: 12%;
-    border: 1px solid var(--purple);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    height: 35px;
-    /* border-bottom: none; */
-    line-height: 1.6;
-    margin-right: 2px;
-  }
-  .merch-button {
-    width: 12%;
-    border: 1px solid var(--purple);
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-    height: 35px;
-    /* border-bottom: none; */
-    line-height: 1.6;
-  }
-  .shop-cards {
-    margin: 0 10%;
-    /* border: 1px solid blue; */
-    border: none;
-    padding: 0;
-    min-width: 0;
-  }
+	.shop-container {
+		width: 80vw;
+		margin: 0 auto;
+	}
+	.shop-container .main-logo {
+		width: 20vw;
+		margin: 5vh 0 3vh 0;
+	}
+	.shop-buttons {
+		padding: 0 10%;
+		width: 100%;
+		margin-bottom: 1px;
+		margin-left: 2%;
+	}
+	.cubensis-button {
+		width: 12%;
+		border: 1px solid var(--purple);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+		/* border-bottom: none; */
+		height: 35px;
+		line-height: 1.6;
+		margin-right: 2px;
+	}
+	.exotic-button {
+		width: 12%;
+		border: 1px solid var(--purple);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+		height: 35px;
+		/* border-bottom: none; */
+		line-height: 1.6;
+		margin-right: 2px;
+	}
+	.merch-button {
+		width: 12%;
+		border: 1px solid var(--purple);
+		border-radius: var(--border-radius) var(--border-radius) 0 0;
+		height: 35px;
+		/* border-bottom: none; */
+		line-height: 1.6;
+	}
+	.shop-cards {
+		margin: 0 10%;
+		/* border: 1px solid blue; */
+		border: none;
+		padding: 0;
+		min-width: 0;
+	}
 }
